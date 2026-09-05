@@ -33,21 +33,18 @@
 
 | 组件 / 软件 | 生产验证锁定的具体版本 / Hash | 作用与技术规格 |
 | :--- | :--- | :--- |
-| **vLLM 框架版本** | `0.26.1rc1.dev608+g99a10304d` (commit `99a10304d`) | 原生支持 SM120 Blackwell 与 NVFP4 KV 缓存管理 |
 | **目标模型仓库** | `unsloth/Qwen3.8-27B-NVFP4` | 4-bit 量化密集模型，全量权重仅 ~11GB |
 | **模型 Git Revision** | `57926baca9a82b4d6906b43f2750d55315f5b10f` | **精确锁定模型权重版本**，确保与评测完全一致 |
-| **生产镜像 Digest** | `sha256:4474e909cfb2b61ab78fa888ccc516032e79975416d5c4bb71e3c62eda2d5cce` | 经过数万次稳定性压力测试的固化生产镜像 |
-| **基座镜像 Digest** | `sha256:96a70bbb56acb6c4d22b3153b090ca322da927361c48a3129a1a258f4c702e73` | `docker.io/vllm/vllm-openai` 官方上游基础快照 |
-| **Attention / GEMM 算子** | FlashInfer `0.6.16+cu129` | SM120 NVFP4 Cutlass Linear + FlashAttention-2 核心后端 |
-| **深度学习运行时** | PyTorch `2.7.0.dev20250217+cu128` / Python `3.12` | 容器内核心推理运行时环境 |
-| **NVIDIA 驱动与 CUDA** | Driver `595.84` / CUDA `12.8` (兼容 12.9) | 官方 Blackwell 架构架构推荐基准驱动 |
+| **默认运行镜像** | `vllm/vllm-openai@sha256:96a70bbb56acb6c4d22b3153b090ca322da927361c48a3129a1a258f4c702e73` | 可公开拉取的不可变官方镜像；启动脚本绝不回退到 `latest` |
+| **评测运行时** | vLLM `0.26.1rc1.dev608+g99a10304d`，FlashInfer `0.6.16+cu129`，PyTorch `2.7.0.dev20250217+cu128` / Python `3.12` | 历史评测所用环境，供性能结果追溯；与默认公开镜像并非同一构建 |
+| **NVIDIA 驱动与 CUDA** | Driver `595.84` / CUDA `12.8` (兼容 12.9) | 原始双卡评测环境；其他驱动版本须自行验证 |
 
 ---
 
 ## ⚡ 极速开始 (Quick Start)
 
 > **注意**：本仓库遵循极致轻量化原则（代码与配置仅约 60KB），**绝不包含数十 GB 的大模型权重文件**。
-> 执行启动脚本时，引擎会自动检测本地缓存；若本地未缓存，会自动从 Hugging Face 官方高速拉取对应 commit 的模型并补齐！
+> 执行启动脚本时，会自动拉取固定的公开 vLLM 容器；引擎会检测本地模型缓存，若未缓存则从 Hugging Face 自动下载对应 commit 的模型。
 
 ### 1. 克隆本仓库
 ```bash
@@ -60,6 +57,7 @@ cd qwen38-27b-dual-gpu-vllm
 ./launch.sh
 ```
 * 自动检测本地显卡数量与拓扑；
+* 自动拉取固定 Digest 的公开 vLLM 容器，不使用会漂移的 `latest` 标签；
 * 自动检测模型缓存；若缺失，自动连接 Hugging Face 并精准拉取固化版本 `57926ba`；
 * 在后台拉起服务，映射到本地 `127.0.0.1:18094`。
 

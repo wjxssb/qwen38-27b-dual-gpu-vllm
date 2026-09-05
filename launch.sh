@@ -68,18 +68,11 @@ if docker ps -a --format "{{.Names}}" | grep -q "^${CONTAINER_NAME}$"; then
     docker rm -f "${CONTAINER_NAME}" >/dev/null 2>&1
 fi
 
-if [ -z "${DOCKER_IMAGE:-}" ]; then
-    # Auto-detect local custom SM120 image if present, otherwise use official vLLM
-    LOCAL_IMAGE=$(docker images --format "{{.Repository}}:{{.Tag}}" | grep "vllm-nvfp4-kv-sm120" | head -n 1 || true)
-    if [ -n "${LOCAL_IMAGE}" ]; then
-        DOCKER_IMAGE="${LOCAL_IMAGE}"
-    elif docker images --format "{{.Repository}}:{{.Tag}}" | grep -q "^vllm/vllm-openai:latest$"; then
-        DOCKER_IMAGE="vllm/vllm-openai:latest"
-    else
-        DOCKER_IMAGE="vllm/vllm-openai:latest"
-        echo -e "${YELLOW}[*] Pulling official vLLM image '${DOCKER_IMAGE}'...${NC}"
-        docker pull "${DOCKER_IMAGE}"
-    fi
+# A digest is immutable; do not silently substitute a locally built image or `latest`.
+DOCKER_IMAGE="${DOCKER_IMAGE:-vllm/vllm-openai@sha256:96a70bbb56acb6c4d22b3153b090ca322da927361c48a3129a1a258f4c702e73}"
+if ! docker image inspect "${DOCKER_IMAGE}" >/dev/null 2>&1; then
+    echo -e "${YELLOW}[*] Pulling pinned vLLM image '${DOCKER_IMAGE}'...${NC}"
+    docker pull "${DOCKER_IMAGE}"
 fi
 
 echo -e "${GREEN}[*] Container Name : ${CONTAINER_NAME}${NC}"

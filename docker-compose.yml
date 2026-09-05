@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  qwen38-27b-vllm:
+    image: ${DOCKER_IMAGE:-vllm/vllm-openai:latest}
+    container_name: qwen38-27b-vllm
+    restart: unless-stopped
+    ipc: host
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 2
+              capabilities: [gpu]
+        limits:
+          memory: 48G
+    ports:
+      - "127.0.0.1:${HOST_PORT:-18094}:8000"
+    volumes:
+      - ${HF_CACHE_DIR:-~/.cache/huggingface}:/root/.cache/huggingface
+    environment:
+      - HF_HOME=/root/.cache/huggingface
+      - VLLM_NO_USAGE_STATS=1
+      - PYTHONUNBUFFERED=1
+      - CUDA_DEVICE_ORDER=PCI_BUS_ID
+      - NCCL_P2P_DISABLE=1
+      - NCCL_SHM_DISABLE=0
+      - VLLM_KV_CACHE_LAYOUT=HND
+      - VLLM_USE_V2_MODEL_RUNNER=0
+      - VLLM_SM120_NVFP4_K3_NATIVE=1
+      - VLLM_SM120_NVFP4_K3_GRAPH=1
+    command: >
+      unsloth/Qwen3.8-27B-NVFP4
+      --revision 57926baca9a82b4d6906b43f2750d55315f5b10f
+      --served-model-name unsloth/Qwen3.8-27B-NVFP4
+      --host 0.0.0.0
+      --port 8000
+      --tensor-parallel-size 2
+      --distributed-executor-backend mp
+      --max-model-len 262144
+      --max-num-batched-tokens 4096
+      --max-num-seqs 1
+      --kv-cache-dtype nvfp4
+      --gpu-memory-utilization 0.914
+      --linear-backend auto
+      --disable-custom-all-reduce
+      --reasoning-parser qwen3
+      --enable-auto-tool-choice
+      --tool-call-parser qwen3_xml
+      --language-model-only
+      --attention-config '{"backend":"FLASHINFER","use_trtllm_attention":false}'
+      --block-size 16
+      --enable-chunked-prefill
+      --enable-prefix-caching
+      --spec-method mtp
+      --spec-tokens 3
+      --no-enforce-eager
+      --compilation-config '{"mode":0,"cudagraph_mode":"FULL_DECODE_ONLY","cudagraph_capture_sizes":[4],"max_cudagraph_capture_size":4}'
+      --kv-cache-memory-bytes 3152594944

@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Model Weights & Large Checkpoints
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+*.gguf
+
+# Logs & Databases
+*.log
+*.sqlite
+*.sqlite-*
+*.wal
+*.shm
+
+# Caches & Temp
+.cache/
+.tmp/
+tmp/
+*.tmp
+
+# Custom Local Overrides
+config.env
+.env

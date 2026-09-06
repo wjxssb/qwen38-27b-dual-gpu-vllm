@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "description": "Graph006 validated runtime overlay, byte-extracted from the GPU campaign lineage and pinned into the public image build.",
+  "lineage": [
+    {
+      "layer": "rebase-base",
+      "artifact": "localhost/frank/vllm-nvfp4-kv-sm120:base-96a70bbb-rebase-699bb316-native-c5532de7",
+      "image_id": "sha256:e51b366ab43511333df07bf92a2f81649561689b4e7a5e2cd12d7195cf330eb2",
+      "content": "vLLM 99a10304 + 6-file SM120 NVFP4/FA2 rebase + native _C_stable_libtorch (sha256 c5532de7f6c4c844ed81563cb907689abf034b3a445c808009a5c8844ad13d5f)",
+      "rebuilt_by": "this Dockerfile native-builder stage (source of truth: checkouts/vllm working diff)"
+    },
+    {
+      "layer": "graph-k3",
+      "artifact": "localhost/frank/vllm-nvfp4-kv-sm120:graph-k3-723a66b7c8bd",
+      "image_id": "sha256:f2783c46753c9d84ce09ddd40f30969e9c9f3b7e82eb225f0575923f50830e88",
+      "content": "target FULL_DECODE_ONLY b1/qlen4 CUDA graph support (flashinfer.py, gpu_model_runner.py, gpu_worker.py, sm120_graph_validation.py)"
+    },
+    {
+      "layer": "stability-core",
+      "artifact": "localhost/frank/vllm-nvfp4-kv-sm120:stability-core-v1-immutable",
+      "image_id": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
+      "content": "TP/shm/engine lifecycle + telemetry hardening (7 overlay files below), overlay manifest sha256 57e211ef0ef41dad91d32c6c05b499dc5d803d25f7c9e617697036f7c7db8fee"
+    },
+    {
+      "layer": "candidate-006-runtime-overlay",
+      "artifact": "dense-mtp-final-candidate-006 bind-mounted overlay files (the exact bytes that served the validated 262K MTP K=3 graph campaign)",
+      "content": "final flashinfer.py, gpu_model_runner.py, async_llm.py, llm_base_proposer.py, sm120_mtp_decode_graph.py"
+    }
+  ],
+  "files": [
+    {"path": "vllm/v1/attention/backends/flashinfer.py", "source": "candidate-006-runtime-overlay"},
+    {"path": "vllm/v1/worker/gpu_model_runner.py", "source": "candidate-006-runtime-overlay"},
+    {"path": "vllm/v1/engine/async_llm.py", "source": "candidate-006-runtime-overlay"},
+    {"path": "vllm/v1/spec_decode/llm_base_proposer.py", "source": "candidate-006-runtime-overlay"},
+    {"path": "vllm/v1/spec_decode/sm120_mtp_decode_graph.py", "source": "candidate-006-runtime-overlay"},
+    {"path": "vllm/v1/worker/gpu_worker.py", "source": "stability-core-image"},
+    {"path": "vllm/v1/worker/sm120_graph_validation.py", "source": "stability-core-image"},
+    {"path": "vllm/v1/engine/core.py", "source": "stability-core-image"},
+    {"path": "vllm/v1/executor/multiproc_executor.py", "source": "stability-core-image"},
+    {"path": "vllm/v1/executor/tp_lifecycle.py", "source": "stability-core-image"},
+    {"path": "vllm/distributed/device_communicators/shm_broadcast.py", "source": "stability-core-image"},
+    {"path": "vllm/stability_telemetry.py", "source": "stability-core-image"}
+  ],
+  "verification": "Each file's sha256 is pinned in build/inputs.json; the runtime stage re-checks every installed byte (build/verify_overlay.py) and the stability-core label hashes were cross-checked during extraction."
+}

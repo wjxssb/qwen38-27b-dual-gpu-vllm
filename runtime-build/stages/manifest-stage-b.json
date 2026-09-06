@@ -1,0 +1,8 @@
+{
+  "stage_id": "stage-b-mtp3-graph",
+  "mtp": true,
+  "cuda_graph": true,
+  "prefix_cache": false,
+  "mode": "mtp3-graph",
+  "purpose": "Graph006 release profile: MTP K=3 with FULL_DECODE_ONLY graphs, startup graph-contract self-validation enabled, windows 8K..262K"
+}

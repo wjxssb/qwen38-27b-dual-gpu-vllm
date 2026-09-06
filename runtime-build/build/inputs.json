@@ -1,0 +1,127 @@
+{
+  "base_image_digest": "sha256:96a70bbb56acb6c4d22b3153b090ca322da927361c48a3129a1a258f4c702e73",
+  "cutlass_commit": "da5e086dab31d63815acafdac9a9c5893b1c69e2",
+  "files": {
+    "checkouts/flashinfer/flashinfer/decode.py": {
+      "bytes": 162165,
+      "sha256": "f67c5704d8ee1c7130b97adde8df8079faa42a11f37a08afa33ab26da71c1fe7"
+    },
+    "checkouts/flashinfer/flashinfer/jit/nvfp4_attention_sm120.py": {
+      "bytes": 3386,
+      "sha256": "bcae2efa6c36cc8aa4f0c2c8ccd803af3b0a55f8300e227157680c4e5296d115"
+    },
+    "checkouts/flashinfer/flashinfer/nvfp4_attention_sm120.py": {
+      "bytes": 15193,
+      "sha256": "07ef34538d2b6e275554b6d7af379857435c10ca9fc370881714c02fb56b5f52"
+    },
+    "checkouts/flashinfer/flashinfer/page.py": {
+      "bytes": 30737,
+      "sha256": "4a20f05410442ff415a44337c7c6246d90777e4c177852b2830fae3cf00eab04"
+    },
+    "checkouts/flashinfer/flashinfer/prefill.py": {
+      "bytes": 224770,
+      "sha256": "7b83362805dabf5d6da80738ab8910be4d0ce60b5dadcbbec2ebdc64594f6525"
+    },
+    "checkouts/flashinfer/flashinfer/trace/templates/nvfp4_attention_sm120.py": {
+      "bytes": 3735,
+      "sha256": "e257eac0ce18e327642749f89e3b7e14976d6c2cc30dd30ac4bf0a9c9fcd73bf"
+    },
+    "checkouts/flashinfer/flashinfer/utils.py": {
+      "bytes": 54329,
+      "sha256": "912466a826fec0f0bdc15e7dd8caa02edb304374d2aade147f112ff09d058136"
+    },
+    "checkouts/vllm/CMakeLists.txt": {
+      "bytes": 68096,
+      "sha256": "a0bc91756f452cfba0420a22239c236ab820621e27110929b633f202064634aa"
+    },
+    "checkouts/vllm/csrc/libtorch_stable/nvfp4_kv_cache_kernels.cu": {
+      "bytes": 17567,
+      "sha256": "9779e0817753b7cbbb3bb7f75d16f42fb5276d81a01ac9c32c3150d0f90e87f9"
+    },
+    "checkouts/vllm/tests/kernels/attention/test_cache.py": {
+      "bytes": 51897,
+      "sha256": "356bbcb371b73d46a9f7c5583ef064c57fb99c0773e2173fee470f2bb4ecf02c"
+    },
+    "checkouts/vllm/tests/kernels/attention/test_flashinfer_trtllm_attention.py": {
+      "bytes": 19235,
+      "sha256": "85e144c9deebbce52db07cfe080a330664119d8f68b540d0d914758d05fe25df"
+    },
+    "checkouts/vllm/tests/kernels/quantization/nvfp4_utils.py": {
+      "bytes": 5233,
+      "sha256": "5fd802090701c5f52c2eaa8d88c575438ca52446d3a23dcaddc907deeda03b16"
+    },
+    "checkouts/vllm/vllm/utils/torch_utils.py": {
+      "bytes": 36893,
+      "sha256": "e465212a94d56317df82b3b11878754206fcdcd37107d4c57b5eaf39022d9514"
+    },
+    "checkouts/vllm/vllm/v1/attention/backends/flashinfer.py": {
+      "bytes": 103467,
+      "sha256": "9a69179f5eb3cd1b13e06f2f336f957076305f2e7e78063321e001ee5228c03c"
+    },
+    "overlay-graph006/vllm/distributed/device_communicators/shm_broadcast.py": {
+      "bytes": 48617,
+      "sha256": "9a539057d878a56344ebb48cfc3d47bb9b65417c70a49f8195cc929c9c7d5e2b"
+    },
+    "overlay-graph006/vllm/stability_telemetry.py": {
+      "bytes": 7827,
+      "sha256": "74dc53da4e009fe525e2a2ddfbae007077e498d5f5e8795f9aa948ec9fbeed01"
+    },
+    "overlay-graph006/vllm/v1/attention/backends/flashinfer.py": {
+      "bytes": 141747,
+      "sha256": "5ec069d06f8ebafa27075832c2acd055594e47e1f66ce4022075abe726ceff6d"
+    },
+    "overlay-graph006/vllm/v1/engine/async_llm.py": {
+      "bytes": 46453,
+      "sha256": "c1530b7530d2325eccbd4af25a608b768ce6bd83e5bcb7e40b2d4e10223703ca"
+    },
+    "overlay-graph006/vllm/v1/engine/core.py": {
+      "bytes": 119965,
+      "sha256": "7ecd422dee9e2b123b55704b51a6a82223d7d516cdc1465ddf34d12e98d11eda"
+    },
+    "overlay-graph006/vllm/v1/executor/multiproc_executor.py": {
+      "bytes": 134554,
+      "sha256": "d8d64b5ce88d330aaad9524a15ffcbfc63cef0bd7264c735166cd0d919f73d76"
+    },
+    "overlay-graph006/vllm/v1/executor/tp_lifecycle.py": {
+      "bytes": 59065,
+      "sha256": "fda096cd340cd48413e640c7d33ee96abacb2529b5170fae3c8a5f00641ce7cb"
+    },
+    "overlay-graph006/vllm/v1/spec_decode/llm_base_proposer.py": {
+      "bytes": 85839,
+      "sha256": "40a78f3e6b71191300c111793bde2ea3eceff21f6d4be9b63fa8e8ae627b89fd"
+    },
+    "overlay-graph006/vllm/v1/spec_decode/sm120_mtp_decode_graph.py": {
+      "bytes": 12689,
+      "sha256": "28576a669c696c759460af61e18807ca35f6c5a464d6f2d9627a348467071c3e"
+    },
+    "overlay-graph006/vllm/v1/worker/gpu_model_runner.py": {
+      "bytes": 371868,
+      "sha256": "e5460f7bfa0f97e3093910167b2ce0bd1ec59727db7432328db5fdd37f5a9447"
+    },
+    "overlay-graph006/vllm/v1/worker/gpu_worker.py": {
+      "bytes": 66083,
+      "sha256": "72346887dd4a20e08278339e02a8545a83ccedd6bb10bff38cb0cd91a13688c8"
+    },
+    "overlay-graph006/vllm/v1/worker/sm120_graph_validation.py": {
+      "bytes": 9876,
+      "sha256": "b62ee09d897acb63b75d79c13a234c5eb4b4dcdee97eeee223a9ae71660d7156"
+    }
+  },
+  "flashinfer_commit": "9dc1b2495b40314dec8a8cde8cd7faf5c5206702",
+  "flashinfer_critical_sources": {
+    "checkouts/flashinfer/flashinfer/decode.py": "flashinfer/decode.py",
+    "checkouts/flashinfer/flashinfer/jit/nvfp4_attention_sm120.py": "flashinfer/jit/nvfp4_attention_sm120.py",
+    "checkouts/flashinfer/flashinfer/nvfp4_attention_sm120.py": "flashinfer/nvfp4_attention_sm120.py",
+    "checkouts/flashinfer/flashinfer/page.py": "flashinfer/page.py",
+    "checkouts/flashinfer/flashinfer/prefill.py": "flashinfer/prefill.py",
+    "checkouts/flashinfer/flashinfer/trace/templates/nvfp4_attention_sm120.py": "flashinfer/trace/templates/nvfp4_attention_sm120.py",
+    "checkouts/flashinfer/flashinfer/utils.py": "flashinfer/utils.py"
+  },
+  "nvrtc_sha256": "c3430e8b6b0d8d3a74f5f839118a85e13e3ad6e4d6203ea1b6a27a0c0b4fe10a",
+  "packages": {
+    "flashinfer-python": "0.6.16.post3",
+    "torch": "2.13.0+cu129"
+  },
+  "schema": 1,
+  "vllm_commit": "99a10304dce8945119bd0b1a072297803c52a749"
+}

@@ -1,0 +1,8 @@
+{
+  "stage_id": "stage-a-eager-nomtp-nograph",
+  "mtp": false,
+  "cuda_graph": false,
+  "prefix_cache": false,
+  "mode": "eager-baseline",
+  "purpose": "Layer-1 SM120 NVFP4/FA2 correctness baseline: no speculative decoding, no CUDA graphs, windows 8K..262K"
+}

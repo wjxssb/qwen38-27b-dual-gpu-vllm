@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-HOST_PORT="${HOST_PORT:-18094}"
+HOST_PORT="${HOST_PORT:-8000}"
 BASE_URL="http://127.0.0.1:${HOST_PORT}/v1"
 
 echo "=== 1. Checking Models Endpoint (${BASE_URL}/models) ==="
 if ! curl -s "${BASE_URL}/models" | grep -q "id"; then
-    echo "[-] Service not ready yet. Check logs with: docker logs -f qwen38-27b-vllm"
+    echo "[-] Service not ready yet. Check logs with: ./launch.sh --stop 重新启动"
     exit 1
 fi
 echo "[+] Models endpoint is ONLINE!"

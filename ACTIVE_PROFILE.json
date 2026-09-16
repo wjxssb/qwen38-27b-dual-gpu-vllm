@@ -61,12 +61,14 @@
   "launch_entry": {
     "path": "launch.sh",
     "bytes": 328,
-    "sha256": "535a0bccb33096d8a0d19f9bb1028e629057b01184a23c150a5192e30acf013c"
+    "sha256": "535a0bccb33096d8a0d19f9bb1028e629057b01184a23c150a5192e30acf013c",
+    "distribution": "local-only: direct-launch scripts retired, not part of the public tree"
   },
   "stop_entry": {
     "path": "stop.sh",
     "bytes": 393,
-    "sha256": "c6d6a4461cb9f8675e0b581d2a87dfa5cb19ce00eb8e0c556dd60fdc38176b9e"
+    "sha256": "c6d6a4461cb9f8675e0b581d2a87dfa5cb19ce00eb8e0c556dd60fdc38176b9e",
+    "distribution": "local-only: direct-launch scripts retired, not part of the public tree"
   },
   "qualification": "HOST_MEMORY_REPAIR_INFERENCE_VERIFIED_LONG_TERM_UNPROVEN",
   "historical_freeze": {

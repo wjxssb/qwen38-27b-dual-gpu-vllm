@@ -1,5 +1,14 @@
 # Qwen3.8-27B 双卡本地服务
 
+> **仓库定位**：本仓库是本地 dense 栈的**参考记录**，不是独立部署包。
+> 当前生产入口以本机 systemd 单元与 `~/nvidia-dense-runtime/inference-control` 为准
+> （桌面 `~/桌面/qwen 27/` 内有说明）；本文记录的是 2026-09-10 主机内存修复后的
+> P2P/CUMEM 日常版状态。
+> `runtime/` 下的大体积状态（runs、core dump、遥测、审计原件）仅存在于本机，
+> 不随仓库分发；文中 `runtime/...` 与 `~/...` 链接指向本机档案，在 GitHub 上会 404。
+> 直接启动脚本 `launch.sh`/`stop.sh` 已退役且不在仓库中；`test_api.sh` 及
+> `runtime/...` 相关命令仅限持有 runtime/ 状态的宿主机运行。
+
 日常版固定为 **P2P/CUMEM、prefill chunk 2048、Prefix Cache 开启（Mamba align）**。
 开机、桌面和根入口统一读取 [selection.json](runtime/stable-prefill-sync/selection.json)。
 
@@ -40,15 +49,17 @@ staging、首请求/长prefill watchdog等修复继续保留。逐值索引校�
 ## 启动、停止与日志
 
 ```bash
+# 以下命令均仅限持有 systemd 单元与 runtime/ 状态的宿主机；公开克隆不包含这些资产
 systemctl --user start qwen27b-relay.service qwen27b.service qwen27b-monitor.service
-./stop.sh
+~/nvidia-dense-runtime/inference-control stop   # 停止入口（旧 ./stop.sh 已退役，不在仓库）
 ./test_api.sh
 python3 -I runtime/stable-prefill-sync/verify.py
 journalctl --user -u qwen27b.service -f
 ```
 
 桌面 `~/桌面/qwen 27/` 重复启动保留现有实例。停止先停止监督程序，再清理所属模型。
-`docker-compose.yml`继续禁用直接启动；查看固定命令可运行 `./launch.sh --print-command`。
+`docker-compose.yml`继续禁用直接启动，仅作为固定参考模板；直接启动脚本
+`launch.sh`/`stop.sh` 已退役、不在仓库中，固定启动命令见 compose 模板字段与本机 systemd 单元。
 当前模型与监督输出进入 systemd journal。前版实例输出保留于 [candidate-launch.log](runtime/graph006/repairs/20260910-opencode-state-audit/candidate-launch.log)。
 systemd active只说明恢复管理器存活；实际模型状态需结合active.json、恢复状态和真实推理结果。
 

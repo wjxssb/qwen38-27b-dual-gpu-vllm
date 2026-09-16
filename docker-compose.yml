@@ -1,62 +1,250 @@
-services:
-  qwen38-27b-vllm:
-    image: ${DOCKER_IMAGE:-vllm/vllm-openai@sha256:96a70bbb56acb6c4d22b3153b090ca322da927361c48a3129a1a258f4c702e73}
-    container_name: qwen38-27b-vllm
-    restart: unless-stopped
-    ipc: host
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 2
-              capabilities: [gpu]
-        limits:
-          memory: 48G
-    ports:
-      - "127.0.0.1:${HOST_PORT:-18094}:8000"
-    volumes:
-      - ${HF_CACHE_DIR:-~/.cache/huggingface}:/root/.cache/huggingface
-    environment:
-      - HF_HOME=/root/.cache/huggingface
-      - VLLM_NO_USAGE_STATS=1
-      - PYTHONUNBUFFERED=1
-      - CUDA_DEVICE_ORDER=PCI_BUS_ID
-      - NCCL_P2P_DISABLE=1
-      - NCCL_SHM_DISABLE=0
-      - VLLM_KV_CACHE_LAYOUT=HND
-      - VLLM_USE_V2_MODEL_RUNNER=0
-      - VLLM_SM120_NVFP4_K3_NATIVE=1
-      - VLLM_SM120_NVFP4_K3_GRAPH=1
-    command: >
-      unsloth/Qwen3.8-27B-NVFP4
-      --revision 57926baca9a82b4d6906b43f2750d55315f5b10f
-      --served-model-name unsloth/Qwen3.8-27B-NVFP4
-      --host 0.0.0.0
-      --port 8000
-      --tensor-parallel-size 2
-      --distributed-executor-backend mp
-      --max-model-len 262144
-      --max-num-batched-tokens 4096
-      --max-num-seqs 1
-      --kv-cache-dtype nvfp4
-      --gpu-memory-utilization 0.914
-      --linear-backend auto
-      --disable-custom-all-reduce
-      --reasoning-parser qwen3
-      --enable-auto-tool-choice
-      --tool-call-parser qwen3_xml
-      --language-model-only
-      --attention-config '{"backend":"FLASHINFER","use_trtllm_attention":false}'
-      --block-size 16
-      --enable-chunked-prefill
-      --enable-prefix-caching
-      --spec-method mtp
-      --spec-tokens 3
-      --no-enforce-eager
-      --compilation-config '{"mode":0,"cudagraph_mode":"FULL_DECODE_ONLY","cudagraph_capture_sizes":[4],"max_cudagraph_capture_size":4}'
-      --kv-cache-memory-bytes 3152594944
+# JSON is a YAML subset. Direct Compose start remains disabled; use the managed launcher.
+{
+  "name": "dense-graph006-launcher-only",
+  "services": {},
+  "x-start-instruction": "Direct Compose execution is intentionally disabled. Use ./launch.sh to hold the shared GPU lease; ./launch.sh --stop validates the owned run.",
+  "x-graph-launcher-template": {
+    "image": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
+    "pull_policy": "never",
+    "restart": "no",
+    "init": true,
+    "read_only": true,
+    "user": "host UID:GID (resolved by launcher)",
+    "cpus": 8,
+    "mem_limit": 48318382080,
+    "memswap_limit": 48318382080,
+    "shm_size": 1073741824,
+    "ipc": "private",
+    "cap_drop": [
+      "ALL"
+    ],
+    "security_opt": [
+      "no-new-privileges:true"
+    ],
+    "ports": [
+      "127.0.0.1:18096:8000"
+    ],
+    "environment": {
+      "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+      "FLASHINFER_NVCC_THREADS": "1",
+      "FLASHINFER_WORKSPACE_BASE": "/cache/flashinfer-workspace",
+      "HF_HUB_DISABLE_TELEMETRY": "1",
+      "HF_HUB_OFFLINE": "1",
+      "MAX_JOBS": "1",
+      "NCCL_P2P_DISABLE": "0",
+      "NCCL_SHM_DISABLE": "0",
+      "PYTHONUNBUFFERED": "1",
+      "TMPDIR": "/cache",
+      "TRANSFORMERS_OFFLINE": "1",
+      "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/autotune-ns-final006",
+      "VLLM_KV_CACHE_LAYOUT": "HND",
+      "VLLM_NO_USAGE_STATS": "1",
+      "VLLM_SM120_GRAPH_DISPATCH_TELEMETRY": "1",
+      "VLLM_SM120_MTP_DECODE_GRAPH": "1",
+      "VLLM_SM120_MTP_GRAPH_EVIDENCE_DIR": "/results",
+      "VLLM_SM120_NVFP4_K3_GRAPH": "1",
+      "VLLM_SM120_NVFP4_K3_NATIVE": "1",
+      "VLLM_SM120_NVFP4_WORKSPACE_TELEMETRY": "1",
+      "VLLM_STABILITY_TELEMETRY_DIR": "/results/stability-telemetry",
+      "VLLM_TP_GENERATION_LIFECYCLE": "1",
+      "VLLM_USE_V2_MODEL_RUNNER": "0",
+      "CUDA_ENABLE_COREDUMP_ON_EXCEPTION": "1",
+      "CUDA_ENABLE_USER_TRIGGERED_COREDUMP": "1",
+      "CUDA_COREDUMP_FILE": "/results/cuda-core.%h.%p.%t.nvcudmp",
+      "CUDA_COREDUMP_PIPE": "/results/cuda-pipe.%h.%p",
+      "CUDA_COREDUMP_GENERATION_FLAGS": "skip_abort",
+      "CUDA_COREDUMP_SHOW_PROGRESS": "1",
+      "NCCL_PROTO": "Simple",
+      "NCCL_DEBUG": "INFO",
+      "NCCL_DEBUG_SUBSYS": "INIT,ENV,GRAPH",
+      "VLLM_SPEC_INDEX_VALIDATION": "1"
+    },
+    "volumes": [
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/runtime_entry.py",
+        "target": "/opt/dense/runtime_entry.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay-integrity.json",
+        "target": "/opt/dense/overlay-integrity.json",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/ai/hf",
+        "target": "/models/hf",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/entrypoints/serve/utils/api_utils.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/serve/utils/api_utils.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/model_executor/models/qwen3_next.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/qwen3_next.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/stability_telemetry.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/stability_telemetry.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/third_party/flash_linear_attention/ops/index.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/third_party/flash_linear_attention/ops/index.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/attention/backends/flashinfer.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/flashinfer.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/attention/backends/gdn_attn.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/gdn_attn.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/engine/async_llm.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/async_llm.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/engine/core.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/engine/core_client.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core_client.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/executor/multiproc_executor.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/spec_decode/llm_base_proposer.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/spec_decode/llm_base_proposer.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/spec_decode/sm120_mtp_decode_graph.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/spec_decode/sm120_mtp_decode_graph.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/worker/gpu_model_runner.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_model_runner.py",
+        "read_only": true
+      },
+      {
+        "type": "bind",
+        "source": "~/qwen38-27b-dual-gpu-vllm/runtime/stable-prefill-sync/snapshot/overlay/vllm/v1/worker/gpu_worker.py",
+        "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py",
+        "read_only": true
+      }
+    ],
+    "entrypoint": "/usr/bin/python3",
+    "command": [
+      "-I",
+      "/opt/dense/runtime_entry.py",
+      "/usr/bin/python3",
+      "-m",
+      "vllm.entrypoints.openai.api_server",
+      "--model",
+      "/models/hf/hub/models--unsloth--Qwen3.8-27B-NVFP4/snapshots/57926baca9a82b4d6906b43f2750d55315f5b10f",
+      "--served-model-name",
+      "unsloth/Qwen3.8-27B-NVFP4",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--tensor-parallel-size",
+      "2",
+      "--distributed-executor-backend",
+      "mp",
+      "--max-model-len",
+      "262144",
+      "--max-num-batched-tokens",
+      "2048",
+      "--max-num-seqs",
+      "1",
+      "--kv-cache-dtype",
+      "nvfp4",
+      "--gpu-memory-utilization",
+      "0.914",
+      "--linear-backend",
+      "auto",
+      "--disable-custom-all-reduce",
+      "--reasoning-parser",
+      "qwen3",
+      "--enable-auto-tool-choice",
+      "--tool-call-parser",
+      "qwen3_xml",
+      "--language-model-only",
+      "--attention-config",
+      "{\"backend\":\"FLASHINFER\",\"use_trtllm_attention\":false}",
+      "--block-size",
+      "16",
+      "--enable-chunked-prefill",
+      "--enable-prefix-caching",
+      "--spec-method",
+      "mtp",
+      "--spec-tokens",
+      "3",
+      "--no-enforce-eager",
+      "--compilation-config",
+      "{\"mode\":0,\"cudagraph_mode\":\"FULL_DECODE_ONLY\",\"cudagraph_capture_sizes\":[4],\"max_cudagraph_capture_size\":4}",
+      "--cudagraph-metrics",
+      "--kv-cache-memory-bytes",
+      "3039750144",
+      "--mamba-cache-mode",
+      "align"
+    ],
+    "x-writable-mounts": "Managed launcher binds selected runtime/cache as /cache and unique runs/RUN_ID/artifacts as /results.",
+    "x-gpu-uuids": [
+      "GPU-<redacted-1>",
+      "GPU-<redacted-2>"
+    ],
+    "x-qualification": "ENGINEERING_VERIFIED_LONG_TERM_UNPROVEN",
+    "x-first-pass": "eager; graph only for draft decode steps 1 and 2",
+    "logging": {
+      "driver": "json-file",
+      "options": {
+        "max-size": "16m",
+        "max-file": "3"
+      }
+    },
+    "x-api-relay": "qwen27b-relay.service forwards 127.0.0.1:18094 to 127.0.0.1:18096",
+    "x-selection-source": "runtime/stable-prefill-sync/selection.json",
+    "x-overlay-count": 15,
+    "x-audit-report": "runtime/graph006/repairs/20260910-opencode-state-audit/REPORT.md",
+    "x-selected-runtime": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-opencode-state-audit/candidate",
+    "x-selected-manifest-sha256": "788142c5b4d5b1770dc5c4649cbf476a64821878c734833d6cea7c9401ca793e"
+  }
+}

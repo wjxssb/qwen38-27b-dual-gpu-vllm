@@ -1,10 +1,49 @@
 # Empirical Benchmark Dossier: Qwen3.8-27B-NVFP4 Local Optimization Stack
 
+<!-- CURRENT_PROFILE_NOTE_20260910_BEGIN -->
+> **Current profile note — 2026-09-10:** The authoritative current version is
+> [the selected profile](runtime/stable-prefill-sync/selection.json), documented in
+> [the current audit report](runtime/graph006/repairs/20260910-opencode-state-audit/REPORT.md): **P2P/CUMEM, prefill chunk 2048,
+> Prefix Cache enabled (Mamba align), 15 read-only overlays**.
+> Current performance measurements and their limits are in
+> [this round's benchmark](runtime/graph006/repairs/20260910-opencode-state-audit/benchmark/PASS.json);
+> this round does not establish a further throughput increase.
+> Everything below this note, including the 2026-09-05 "Current default" / "Final default"
+> labels and older SHM / chunk 4096 parameters, is preserved historical experiment
+> documentation, not the present launch configuration or current qualification.
+<!-- CURRENT_PROFILE_NOTE_20260910_END -->
+
 **Target System**: 2 × NVIDIA GeForce RTX 5070 Ti 16GB (Blackwell SM120)  
 **Model**: `unsloth/Qwen3.8-27B-NVFP4` (Revision: `57926baca9a82b4d6906b43f2750d55315f5b10f`)  
 **Evaluation Target**: 262,144 Tokens Native Context Under Tensor Parallelism (TP=2)  
-**Status**: Formally Qualified (`PRODUCTION_FREEZE_PREFIX_ON_L1POOL_V1`)  
+**Current default**: Graph MTP frozen after final006 completed three long requests and fullboot lifecycle; formal performance measurement remains invalid.
+
+**Daily profile selection (2026-09-05)**: Graph006 exclusively replaces the historical approximately 61 tok/s configuration. It is the finalized successor of the approximately 66.2 tok/s Graph003 proposal. Use `./launch.sh --start`; historical profiles below are evidence, not launch defaults or automatic fallbacks. [Active profile](ACTIVE_PROFILE.json).
+
+**Historical freeze described below**: `PRODUCTION_FREEZE_PREFIX_ON_L1POOL_V1`; its status does not qualify the new Graph package.
 **Data Policy**: 100% verified empirical measurements extracted directly from campaign logs and JSON artifacts. Zero unmeasured extrapolations.
+
+## Final default: MTP drafter Graph (2026-09-05 UTC)
+
+The first isolated dual-GPU canary, `dense-mtp-drafter-graph-001`, passed. Each rank captured a single-token Graph for MTP followups 1 and 2; the first drafter pass remains Eager. All four Graph-versus-Eager comparisons had zero maximum absolute difference in hidden states and logits, with identical greedy tokens. Two HTTP requests both returned `391`. This establishes the short canary's correctness, not long-context throughput or full-service qualification.
+
+Each rank reported a 4,194,304-byte physical-free-memory decrease during the new capture, with 1,057,816,576 bytes free afterwards. These are capture-window measurements, not a matched estimate of the total additional memory peak. The job exited successfully, its container was removed, and no new kernel faults were observed. [Canary closeout](~/ai/tools/two-session-supervisor/state/receipts/dense-drafter001-closeout.json), [raw measurements](~/ai/tools/two-session-supervisor/state/results/dense-mtp-drafter-graph-001/artifacts/fullboot-evidence.json).
+
+The historical **61.46 tok/s** median below belongs to image `b6190f10…`, **Prefix OFF, chunk 2048, KV 2,928,199,680 bytes/rank**. It must not be attributed to the later `4474e909…` Prefix-ON/L1 configuration in section 3. The 12 data points are completed requests, including attempts whose later lifecycle checks failed. The current controls are reported below; the proposal's 75–80 tok/s prediction was not reached. [Historical request audit](~/ai/tools/two-session-supervisor/state/receipts/dense-communication-stop-audit/review.json).
+
+The current baseline control `dense-mtp-matched-baseline-002` completed three identical 260,927-input/1,024-output requests: **62.4812, 61.8403, 61.8899 tok/s**, median **61.8899 tok/s**. All decoded output bytes match; the first request recorded one inference-time JIT notice, which is retained. The job is **FAIL**: the observer omitted Docker-owned model CPU, and one real swap interval also exceeded the predeclared background budget. The fullboot verifier also rejected an `EngineDeadError` traceback from the output handler during shutdown, after all three requests had completed. These are exploratory measurements, not a quiet-qualified A/B result or lifecycle qualification. The container exited with code 0 and no OOM (the host runner returned 2 for verification failure), was removed, and the kernel-fault baseline remained unchanged. [Control closeout](~/ai/tools/two-session-supervisor/state/receipts/dense-mtp-matched-baseline-002-closeout.json).
+
+The Graph-enabled control `dense-mtp-matched-candidate-003` completed the same three requests at **66.0975, 66.2050, 66.2734 tok/s**, median **66.2050 tok/s**. The observed median difference is **+6.97%** against baseline002. All six decoded outputs match exactly. Both arms retain their first-request inference JIT notice. This does **not** establish the proposed 75–80 tok/s. Both jobs remain **FAIL** for formal qualification: candidate003 lost one process-counter sample, and its host verifier rejected a target-ended file mtime that preceded the event value by 269,701 ns. These failures are preserved; no artifact was rewritten to pass. [Independent raw SSE comparison](~/ai/tools/two-session-supervisor/state/receipts/dense-matched-002-003-raw-comparison.json), [candidate closeout](~/ai/tools/two-session-supervisor/state/receipts/dense-mtp-matched-candidate-003-closeout.json).
+
+The follow-up `dense-mtp-graph-lifecycle-004` **passed** with the four mathematical overlays unchanged. A fifth overlay cancels the async output handler before shutting down the engine manager; the gate now records and verifies explicit publication timestamps after flushing and reading back each event marker. Both requests returned `391`, all four Graph/Eager hidden-state and logit comparisons remained exact, and the host verifier returned `DENSE_FULLBOOT_PASS`. The container exited with code 0, was removed, and no new kernel faults appeared. This verifies the repaired short lifecycle; it does not retroactively qualify 002/003, measure new throughput, or establish a long-context lifecycle pass for the final package. [004 closeout](~/ai/tools/two-session-supervisor/state/receipts/dense-mtp-graph-lifecycle-004-closeout.json), [frozen job](~/ai/lab/vllm-unsloth-5070ti-overnight/experimental/sm120-nvfp4-kv/service-262144-mtp-drafter-graph-v1/campaign/JOB_MTP_GRAPH_LIFECYCLE_004.json).
+
+The final baseline arm `dense-mtp-final-baseline-005` is **FAIL**. Its first two long requests completed at **63.0093 and 62.9674 tok/s**, with the same decoded output hash as 002/003. The third request stalled during prefill around 196K–198K computed input tokens; the engine reported `RPC call to sample_tokens timed out`, and the stream returned no generated tokens. There is no valid three-request median. The owned container was removed after release, with no new kernel faults. The EngineCore telemetry file grew to **8,401,190,912 bytes**; independent inspection was limited to file metadata and bounded byte windows, so the effect of this telemetry on the stall remains unresolved. [005 closeout](~/ai/tools/two-session-supervisor/state/receipts/dense-mtp-final-baseline-005-closeout.json), [bounded independent review](~/ai/tools/two-session-supervisor/state/receipts/dense-final005-independent-failure/review.json).
+
+The final Graph arm `dense-mtp-final-candidate-006` completed all three requests at **67.5273, 67.5063 and 67.5960 tok/s**, observed median **67.5273 tok/s**. Outputs match the previous successful requests exactly. All four Graph/Eager hidden-state and logit comparisons have maximum absolute difference zero, and fullboot verification **passed** with clean engine exit, final host sample acknowledgement, container/runner exit 0 and no new kernel faults. The container was removed. The scheduler result is nevertheless **INVALID_MEASUREMENT**: formal request windows included swap activity, a permission-denied process IO sample, excess unattributed CPU activity, and a boundary sample whose owned runner root had exited. These observations cannot be promoted to a formally qualified performance comparison. [006 closeout](~/ai/tools/two-session-supervisor/state/receipts/dense-mtp-final-candidate-006-closeout.json), [raw benchmark](~/ai/tools/two-session-supervisor/state/results/dense-mtp-final-candidate-006/artifacts/benchmark-receipt.json), [quiet-window record](~/ai/tools/two-session-supervisor/state/results/dense-mtp-final-candidate-006/quiet-window.json).
+
+The user selected **Graph MTP as the Dense default** and ended further Eager control runs. The default package is now frozen with the exact final006 image, five overlays and model parameters; its launcher passed seven CPU ownership/lifecycle tests and a static configuration comparison. The first drafter pass remains Eager; later two passes use Graph. Multiprocess RPC/shared-memory transport remains. The observed lack of a stall in 003/006 does not prove this transport is deadlock-free. The user's conditional SHM/telemetry repair was not triggered by006, so this freeze retains its original 1 GiB SHM and telemetry behavior. [Default package freeze](runtime/graph006/FREEZE.json).
+
+The 640 MiB margins in the historical tables are observations, not a current minimum reserve. The user's current policy permits stable execution within physical capacity.
 
 ---
 
@@ -101,7 +140,7 @@ This optimization achievement was realized strictly within consumer desktop hard
 ## 5. Decode Performance & Speculative Scaling
 
 ### Sustained Generation at Maximum Context (260,927 Prompt + 1,024 Output Tokens)
-Measurements recorded under full production configuration (`MTP K=3` + `CUDA Graph FULL_DECODE_ONLY [4]`):
+Historical completed requests used image `b6190f10…`, Prefix OFF, chunk 2048, KV 2,928,199,680 bytes/rank, `MTP K=3`, and target `CUDA Graph FULL_DECODE_ONLY [4]`. They do not measure the new drafter Graph or the section 3 Prefix-ON/L1 profile:
 
 | Run ID | Prompt Tokens | Output Tokens | TTFT (s) | Decode Throughput | TPOT | Total Elapsed |
 |---|---:|---:|---:|---:|---:|---:|
@@ -118,7 +157,7 @@ Measurements recorded under full production configuration (`MTP K=3` + `CUDA Gra
 | `004-stability-c2` | 260,927 | 1,024 | 202.41 s | **60.28 tok/s** | **16.59 ms** | 219.41 s |
 | `001-stability-a` | 260,927 | 1,024 | 199.68 s | **60.06 tok/s** | **16.65 ms** | 216.71 s |
 
-* **Decode Statistics (12 Qualified Runs)**:
+* **Decode Statistics (12 Completed Requests; Not 12 Fully Qualified Runs)**:
   * Minimum: **60.06 tok/s** (16.65 ms TPOT)
   * Median: **61.46 tok/s** (16.27 ms TPOT)
   * Mean: **61.60 tok/s** (16.24 ms TPOT)
@@ -202,7 +241,7 @@ From matched-window ABAB campaign (`CHUNK4096_USER_PROMOTION.json`):
 | **S5** | MTP Speculative Decoding (K=3) | 262,144 | 195.42 s | 1,335.2 tok/s | 32.69 tok/s | 30.60 ms | 15,620 MiB | +151% decode |
 | **S6** | CUDA Graph Decoding (`FULL_DECODE_ONLY`) | 262,144 | 199.68 s | 1,306.7 tok/s | **61.46 tok/s** | **16.27 ms** | 15,597 MiB | **4.72× baseline (13.03 → 61.46 tok/s)** |
 | **S7** | Chunked Prefill 4096 (vs 2048) | 262,144 | 187.24 s | **1,393.6 tok/s** | 60.06 tok/s | 16.76 ms | 15,597 MiB | **+6.67% prefill** |
-| **S8** | L1 Pool + Prefix Cache ON (Current) | 262,144 | **182.34 s** | **1,430.98 tok/s** | **61.46 tok/s** | **16.27 ms** | **15,663 MiB** | **Production Qualified** |
+| **S8** | L1 Pool + Prefix Cache ON (Historical) | 262,144 | **182.34 s** | **1,430.98 tok/s** | Not established by the S6 requests | Not established by the S6 requests | **15,663 MiB** | Historical Prefix qualification |
 
 ---
 

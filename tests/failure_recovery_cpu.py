@@ -20,7 +20,20 @@ ROOT = Path(os.environ.get('GRAPH006_TEST_ROOT',
     str(Path(__file__).resolve().parents[1] / 'runtime/graph006')))
 
 
+def setUpModule():
+    if not (ROOT / 'launcher.py').exists():
+        raise unittest.SkipTest(
+            f"{ROOT} not found: the local runtime/ state is not distributed with this repo. "
+            "Run on the host that owns the runtime state (see README positioning note)."
+        )
+
+
 def load(path):
+    if not path.exists():
+        raise unittest.SkipTest(
+            f"Module not found at {path}: the local runtime/ state is not distributed with this repo. "
+            "Run on the host that owns the runtime state (see README positioning note)."
+        )
     spec = importlib.util.spec_from_file_location('target_' + path.stem, path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

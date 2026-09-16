@@ -28,8 +28,22 @@ RUN = 'b' * 32
 MANIFEST = 'c' * 64
 
 
+def setUpModule():
+    if not (PACKAGE / 'launcher.py').exists():
+        raise unittest.SkipTest(
+            f"{PACKAGE} not found: the local runtime/ state is not distributed with this repo. "
+            "Run on the host that owns the runtime state (see README positioning note)."
+        )
+
+
 def load_launcher():
-    spec = importlib.util.spec_from_file_location('launcher_graph006_test_target', PACKAGE / 'launcher.py')
+    target = PACKAGE / 'launcher.py'
+    if not target.exists():
+        raise unittest.SkipTest(
+            f"launcher.py not found at {target}: the local runtime/ state is not distributed with this repo. "
+            "Run on the host that owns the runtime state (see README positioning note)."
+        )
+    spec = importlib.util.spec_from_file_location('launcher_graph006_test_target', target)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module

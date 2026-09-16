@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "runtime_abi": "qwen38-sm120-v1",
+  "model": {
+    "repo_id": "unsloth/Qwen3.8-27B-NVFP4",
+    "revision": "57926baca9a82b4d6906b43f2750d55315f5b10f"
+  },
+  "supported_modes": [
+    "mtp3-graph"
+  ],
+  "build_revision": "SET_BY_IMAGE_BUILD",
+  "vllm_version": "SET_BY_IMAGE_BUILD",
+  "source_manifest_sha256": "SET_BY_IMAGE_BUILD"
+}

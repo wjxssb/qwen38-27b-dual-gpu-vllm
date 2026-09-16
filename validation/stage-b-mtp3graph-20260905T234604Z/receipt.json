@@ -1,0 +1,14 @@
+{
+  "started_at": "2026-09-05T23:46:04.530130+00:00",
+  "status": "PASS",
+  "spec_sha256": "3a7ce313c1f99510d970b392cfb982f7b607817bcbc78a2e3907dc45b2138d63",
+  "cleanup_verified": true,
+  "container_id": "c8305a6947ca9ac80f39b808889bc573f87c681c002574d0402cfab6fe985f96",
+  "ready_after_seconds": 273.969296174997,
+  "quality": {
+    "status": "PASS",
+    "exit_code": 0
+  },
+  "container_create_attempted": true,
+  "finished_at": "2026-09-06T00:04:00.952747+00:00"
+}

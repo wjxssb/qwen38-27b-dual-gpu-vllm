@@ -8,13 +8,19 @@
   "prefill_layer_sync": true,
   "selected_at": "2026-09-10T22:49:33.713395-07:00",
   "profile": "runtime/stable-prefill-sync",
-  "launch": [
+  "launch": null,
+  "stop": null,
+  "historical_launch": [
     "./launch.sh",
     "--start"
   ],
-  "stop": [
+  "historical_stop": [
     "./stop.sh"
   ],
+  "managed_entry": {
+    "distribution": "host-only",
+    "type": "systemd+inference-control"
+  },
   "api": "http://127.0.0.1:18094/v1",
   "environment": {
     "CUDA_DEVICE_ORDER": "PCI_BUS_ID",

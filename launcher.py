@@ -396,7 +396,7 @@ def run_server(obj, mode, profile, image_id, ids, data, port, requested):
                     except OSError:
                         pass
                     if receipt['ready']:
-                        print('API is ready. Ctrl-C or ./launch.sh --stop stops this run.', flush=True)
+                        print('API is ready. Ctrl-C or ./launcher.py --stop stops this run.', flush=True)
                 time.sleep(0.5)
         finally:
             try:

@@ -15,10 +15,10 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 QUALIFICATION = ROOT.parent / "qualification"
 GATE = QUALIFICATION / "quality_gate.py"
-MODEL_HOST = Path("/home/frank/ai/hf/hub")
+MODEL_HOST = Path("~/ai/hf/hub")
 GPU_UUIDS = [
-    "GPU-0506b796-f8ea-b40c-616d-5e9d43a9e175",
-    "GPU-8897f327-ceb9-4fab-b84e-d34b24f0b584",
+    "GPU-<redacted-2>",
+    "GPU-<redacted-1>",
 ]
 FAULT = re.compile(
     r"NVRM: Xid|oom-kill:|Out of memory:|Memory cgroup out of memory:|"

@@ -1,22 +1,22 @@
 {
   "run_id": "qwen38-pub-stagea-20260906T003517Z",
-  "run_dir": "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z",
+  "run_dir": "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z",
   "image": "sha256:275913ba1639a37a1364114432de1fbbe6786a6407f133e3cabe0a3e6f2104ff",
   "gpu_uuids": [
-    "GPU-0506b796-f8ea-b40c-616d-5e9d43a9e175",
-    "GPU-8897f327-ceb9-4fab-b84e-d34b24f0b584"
+    "GPU-<redacted-2>",
+    "GPU-<redacted-1>"
   ],
   "gpu_locks": [
-    "/tmp/qwen38-runtime-gpu-locks-v1/GPU-0506b796-f8ea-b40c-616d-5e9d43a9e175.lock",
-    "/tmp/qwen38-runtime-gpu-locks-v1/GPU-8897f327-ceb9-4fab-b84e-d34b24f0b584.lock"
+    "/tmp/qwen38-runtime-gpu-locks-v1/GPU-<redacted-2>.lock",
+    "/tmp/qwen38-runtime-gpu-locks-v1/GPU-<redacted-1>.lock"
   ],
   "required_available_bytes": 30000000000,
-  "kernel_baseline": "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/kernel-baseline.json",
+  "kernel_baseline": "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/kernel-baseline.json",
   "file_hashes": {
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/manifest-stage-a.json": "e2cb3ca051871ae2fcb29abfbb224ff911984772eaa8297bc25d6abd419bd1c2",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/qualification/quality_gate.py": "489f9d4156c55dcbfe29262242a66df3b0ae0c08eb852996e726cad9e4404203",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/run_quality.py": "16bc076a68e82a599f96a498bb1d01e3aa89201c4bac0b728ff0895f92733b47",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/build/release.json": "9966f72ce259be20d60cfbcd13f69a45b318e0a6845ad6cd06be67a581b0ed0b"
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/manifest-stage-a.json": "e2cb3ca051871ae2fcb29abfbb224ff911984772eaa8297bc25d6abd419bd1c2",
+    "~/ai/lab/dense-public-runtime-20260905/qualification/quality_gate.py": "489f9d4156c55dcbfe29262242a66df3b0ae0c08eb852996e726cad9e4404203",
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/run_quality.py": "16bc076a68e82a599f96a498bb1d01e3aa89201c4bac0b728ff0895f92733b47",
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/build/release.json": "9966f72ce259be20d60cfbcd13f69a45b318e0a6845ad6cd06be67a581b0ed0b"
   },
   "docker_create": [
     "docker",
@@ -53,17 +53,17 @@
     "--tmpfs",
     "/tmp:rw,nosuid,nodev,size=268435456",
     "--gpus",
-    "\"device=GPU-0506b796-f8ea-b40c-616d-5e9d43a9e175,GPU-8897f327-ceb9-4fab-b84e-d34b24f0b584\"",
+    "\"device=GPU-<redacted-2>,GPU-<redacted-1>\"",
     "--publish",
     "127.0.0.1:18001:8000",
     "--label",
     "io.qwen38.qualification=qwen38-pub-stagea-20260906T003517Z",
     "--mount",
-    "type=bind,src=/home/frank/ai/hf/hub,dst=/models/hub,readonly",
+    "type=bind,src=~/ai/hf/hub,dst=/models/hub,readonly",
     "--mount",
-    "type=bind,src=/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/cache,dst=/cache",
+    "type=bind,src=~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/cache,dst=/cache",
     "--mount",
-    "type=bind,src=/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/results,dst=/results",
+    "type=bind,src=~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/results,dst=/results",
     "--workdir",
     "/results",
     "--env",
@@ -91,7 +91,7 @@
     "--env",
     "NVIDIA_DRIVER_CAPABILITIES=compute,utility",
     "--env",
-    "NVIDIA_VISIBLE_DEVICES=GPU-0506b796-f8ea-b40c-616d-5e9d43a9e175,GPU-8897f327-ceb9-4fab-b84e-d34b24f0b584",
+    "NVIDIA_VISIBLE_DEVICES=GPU-<redacted-2>,GPU-<redacted-1>",
     "--env",
     "PYTHONUNBUFFERED=1",
     "--env",
@@ -159,22 +159,22 @@
     "2928199680"
   ],
   "create_dirs": [
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/cache",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/results"
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/cache",
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/results"
   ],
   "health_url": "http://127.0.0.1:18001/health",
   "startup_timeout_seconds": 1700,
   "deadline_seconds": 9000,
   "client_argv": [
     "/usr/bin/python3",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/run_quality.py",
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/run_quality.py",
     "--result",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/quality-result.json",
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/quality-result.json",
     "--report-dir",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/quality-report",
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/quality-report",
     "--",
     "/usr/bin/python3",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/qualification/quality_gate.py",
+    "~/ai/lab/dense-public-runtime-20260905/qualification/quality_gate.py",
     "--base-url",
     "http://127.0.0.1:18001",
     "--model",
@@ -182,9 +182,9 @@
     "--stage-id",
     "stage-a-eager-nomtp-nograph",
     "--stage-manifest",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/manifest-stage-a.json",
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/manifest-stage-a.json",
     "--output",
-    "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/quality-report",
+    "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/quality-report",
     "--windows",
     "8192,65536,131072,196608,262144",
     "--repeats",
@@ -198,5 +198,5 @@
     "--seed",
     "dense-public-quality-v1"
   ],
-  "quality_result": "/home/frank/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/quality-result.json"
+  "quality_result": "~/ai/lab/dense-public-runtime-20260905/runtime-rebase/stages/runs/qwen38-pub-stagea-20260906T003517Z/quality-result.json"
 }

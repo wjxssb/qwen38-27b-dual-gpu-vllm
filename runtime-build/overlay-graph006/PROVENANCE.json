@@ -4,20 +4,20 @@
   "lineage": [
     {
       "layer": "rebase-base",
-      "artifact": "localhost/frank/vllm-nvfp4-kv-sm120:base-96a70bbb-rebase-699bb316-native-c5532de7",
+      "artifact": "localhost/<redacted-user>/vllm-nvfp4-kv-sm120:base-96a70bbb-rebase-699bb316-native-c5532de7",
       "image_id": "sha256:e51b366ab43511333df07bf92a2f81649561689b4e7a5e2cd12d7195cf330eb2",
       "content": "vLLM 99a10304 + 6-file SM120 NVFP4/FA2 rebase + native _C_stable_libtorch (sha256 c5532de7f6c4c844ed81563cb907689abf034b3a445c808009a5c8844ad13d5f)",
       "rebuilt_by": "this Dockerfile native-builder stage (source of truth: checkouts/vllm working diff)"
     },
     {
       "layer": "graph-k3",
-      "artifact": "localhost/frank/vllm-nvfp4-kv-sm120:graph-k3-723a66b7c8bd",
+      "artifact": "localhost/<redacted-user>/vllm-nvfp4-kv-sm120:graph-k3-723a66b7c8bd",
       "image_id": "sha256:f2783c46753c9d84ce09ddd40f30969e9c9f3b7e82eb225f0575923f50830e88",
       "content": "target FULL_DECODE_ONLY b1/qlen4 CUDA graph support (flashinfer.py, gpu_model_runner.py, gpu_worker.py, sm120_graph_validation.py)"
     },
     {
       "layer": "stability-core",
-      "artifact": "localhost/frank/vllm-nvfp4-kv-sm120:stability-core-v1-immutable",
+      "artifact": "localhost/<redacted-user>/vllm-nvfp4-kv-sm120:stability-core-v1-immutable",
       "image_id": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
       "content": "TP/shm/engine lifecycle + telemetry hardening (7 overlay files below), overlay manifest sha256 57e211ef0ef41dad91d32c6c05b499dc5d803d25f7c9e617697036f7c7db8fee"
     },

@@ -1,7 +1,7 @@
-# 运行时镜像构建源（runtime-build/）
+# 运行时镜像构建定义与契约（runtime-build/）
 
-`ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3` 的完整构建定义。仓库只保存**构建定义与钉死清单**，
-上游源码 checkout 由提交哈希重建（保持本仓库轻量）：
+`ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3` 的构建定义与哈希钉死清单。仓库保存**可验证的构建定义与来源契约（Provenance & Hash-Pinned Contract）**，
+上游源码 checkout 由提交哈希检出（保持本仓库轻量）：
 
 ```bash
 git clone https://github.com/vllm-project/vllm.git      && git -C vllm      checkout 99a10304dce8945119bd0b1a072297803c52a749
@@ -45,7 +45,7 @@ docker build --progress=plain -f build/Dockerfile \
 > `csrc/libtorch_stable/nvfp4_kv_cache_kernels.cu`、`vllm/v1/attention/backends/flashinfer.py`、
 > `vllm/utils/torch_utils.py` 与两个测试文件）的期望哈希全部记录在 `build/inputs.json`；
 > 上游 checkout 本身不带这些修改，需要按 `git log`/PR 或维护者发布的源码包应用后，哈希一致才能通过
-> `verify_inputs.py`。完整可构建源码包由维护者按需发布（issue 索取）。
+> `verify_inputs.py`。公开 clone 提供可验证、哈希钉死的构建定义契约，但精确源码重构仍需额外 patch payload；完整可构建源码包由维护者按需发布（issue 索取）。
 
 约束与校验链：
 

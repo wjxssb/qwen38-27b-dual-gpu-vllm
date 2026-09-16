@@ -1,7 +1,11 @@
 # Release v1.0.0 — sm120-nvfp4-k3
 
+> **Historical release note for tag `v1.0.0`.**  
+> These commands and instructions apply to the `v1.0.0` release tag, not current `main`.  
+> Current `main` is a local reference record; direct-launch scripts `launch.sh`/`stop.sh` have been retired (see [README.md](README.md) for current positioning and managed entry points).
+
 公开定制运行时镜像 `ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3`（启动器按 digest 钉死拉取），
-让任何一台双卡 RTX 5070 Ti（SM120）机器 `git clone && ./launch.sh` 直接复现
+让任何一台双卡 RTX 5070 Ti（SM120）机器通过 `git clone --branch v1.0.0 --depth 1 https://github.com/wjxssb/qwen38-27b-dual-gpu-vllm.git && ./launch.sh` 直接复现
 Qwen3.8-27B-NVFP4 的 262K 满血上下文 + MTP K=3 CUDA Graph 推理服务。
 
 ## 本镜像包含什么
@@ -16,9 +20,10 @@ Qwen3.8-27B-NVFP4 的 262K 满血上下文 + MTP K=3 CUDA Graph 推理服务。
    - MTP K=3 native 投机解码（target/drafter 注意力后端分区、双工作区探针与账本）
    - FULL_DECODE_ONLY CUDA Graph（b=1 / q_len=4）合约解析与启动自检
    - TP 请求生命周期 fail-closed、SHM 广播护栏、引擎/执行器稳定性加固
-3. **可复现构建**：`build/inputs.json` 对全部 26 个输入文件做 SHA-256 钉死；镜像构建时校验输入清单、
+3. **哈希钉死的构建契约与血缘（Hash-Pinned Build Contract & Provenance）**：`build/inputs.json` 对全部 26 个输入文件做 SHA-256 钉死；镜像构建时校验输入清单、
    在镜像内复核 13 个安装产物的最终哈希；镜像内 `/opt/qwen38-runtime/release.json` 为运行时契约
    （SHA-256 记录于 `release.json` 的 `image_contract_sha256`，启动器逐字节比对后才启动）。
+   注：精确源码级重构（rebuild）除公开上游 commit 外，仍需叠加 6 个 SM120 关键修改文件（详见 `runtime-build/` 说明；维护者按需提供 patch payload）。
 
 ## 验证结果（真实门禁，证据在 validation/）
 
@@ -42,4 +47,4 @@ Qwen3.8-27B-NVFP4 的 262K 满血上下文 + MTP K=3 CUDA Graph 推理服务。
 ## 升级与回滚
 
 - 镜像不可变，按 digest 拉取；回滚 = 改回上一个 digest。
-- `eager-baseline` 为任何图模式异常下的兜底模式（`./launch.sh --mode eager-baseline`）。
+- `eager-baseline` 为任何图模式异常下的兜底模式（在 `v1.0.0` tag 下为 `./launch.sh --mode eager-baseline`；当前 `main` 请参阅 README 定位说明）。

@@ -18,7 +18,7 @@
 **Evaluation Target**: 262,144 Tokens Native Context Under Tensor Parallelism (TP=2)  
 **Current default**: Graph MTP frozen after final006 completed three long requests and fullboot lifecycle; formal performance measurement remains invalid.
 
-**Daily profile selection (2026-09-05)**: Graph006 exclusively replaces the historical approximately 61 tok/s configuration. It is the finalized successor of the approximately 66.2 tok/s Graph003 proposal. Use `./launch.sh --start`; historical profiles below are evidence, not launch defaults or automatic fallbacks. [Active profile](ACTIVE_PROFILE.json).
+**Daily profile selection (2026-09-05)**: Graph006 exclusively replaces the historical approximately 61 tok/s configuration. It is the finalized successor of the approximately 66.2 tok/s Graph003 proposal (originally started via `./launch.sh --start`; see README for current managed entry points); historical profiles below are evidence, not launch defaults or automatic fallbacks. [Active profile](ACTIVE_PROFILE.json).
 
 **Historical freeze described below**: `PRODUCTION_FREEZE_PREFIX_ON_L1POOL_V1`; its status does not qualify the new Graph package.
 **Data Policy**: 100% verified empirical measurements extracted directly from campaign logs and JSON artifacts. Zero unmeasured extrapolations.

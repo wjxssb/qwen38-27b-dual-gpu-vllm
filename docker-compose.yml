@@ -2,7 +2,7 @@
 {
   "name": "dense-graph006-launcher-only",
   "services": {},
-  "x-start-instruction": "Direct Compose execution is intentionally disabled. Use ./launch.sh to hold the shared GPU lease; ./launch.sh --stop validates the owned run.",
+  "x-start-instruction": "Direct Compose execution is intentionally disabled. The managed launcher (host-only, not distributed with this repo) holds the shared GPU lease and validates the owned run; see the README positioning note.",
   "x-graph-launcher-template": {
     "image": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
     "pull_policy": "never",

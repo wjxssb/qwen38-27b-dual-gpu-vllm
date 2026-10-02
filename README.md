@@ -7,27 +7,53 @@
 > 不随仓库分发；文中 `runtime/...` 与 `~/...` 链接指向本机档案，在 GitHub 上会 404。
 > 直接启动脚本 `launch.sh`/`stop.sh` 已退役且不在仓库中；`test_api.sh` 及
 > `runtime/...` 相关命令仅限持有 runtime/ 状态的宿主机运行。
-> 外部用户可用的只有下文「公开镜像（v1.0.0）」一节。
+> 外部用户可直接 pull 的镜像见下文「公开镜像」一节。
 
-## 公开镜像（v1.0.0）：其他人能直接 pull 的部分
+## 公开镜像：其他人能直接 pull 的部分
 
-**能 pull 的只有 v1.0.0 镜像，它不是下文的 2026-09-23 宿主机生产 profile。**
-2026-09-23 的生产配置从未发布为镜像：它由宿主机私有基础镜像
-`sha256:b6190f10…b76c6` + 29 个只读 overlay 挂载 + 宿主机 launcher/supervisor/恢复逻辑
-+ `nvidia/Qwen3.8-27B-NVFP4` 权重组合而成，不能靠单个镜像复现。
+GHCR 包 `ghcr.io/wjxssb/qwen38-27b-vllm`（公开，匿名可拉）有两个固定版本：
 
-| | 公开镜像 v1.0.0（可 pull） | 宿主机生产 2026-09-23（不可 pull） |
+| | **生产版 2026-09-23**（推荐） | v1.0.0（2026-09-05） |
 | --- | --- | --- |
-| 镜像 | `ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3@sha256:275913ba…04ff`（公开，匿名可拉，约 11 GB 压缩） | 私有本地镜像 + overlay 挂载 |
-| 模型 | `unsloth/Qwen3.8-27B-NVFP4@57926bac` | `nvidia/Qwen3.8-27B-NVFP4@dbb8f445` |
-| prefill chunk | 2048 | 4096 |
-| Prefix Cache | 关闭 | 开启（Mamba align） |
-| NCCL P2P | 关闭（`NCCL_P2P_DISABLE=1`） | 开启，每实例双向 P2P 门禁 |
-| KV 字节/卡 | 2,928,199,680 | 3,039,750,144 |
-| 验证 | 2026-09-05 分阶段 GPU 质量门禁（`validation/stage-*`） | 仅在本机晋升验收 |
+| 镜像 | `:sm120-nvfp4-k3-prod-20260923@sha256:2885b963…892b` | `:sm120-nvfp4-k3@sha256:275913ba…04ff` |
+| 内容 | 宿主机生产 profile `production-dense-recovery-20260923/graph-prefix` 原样烘焙：基础镜像 `b6190f10…b76c6` + 29 个 overlay + 检查插件，逐文件 SHA 校验 | v1.0.0 发布契约 |
+| 模型 | `nvidia/Qwen3.8-27B-NVFP4@dbb8f445` | `unsloth/Qwen3.8-27B-NVFP4@57926bac` |
+| prefill chunk / Prefix Cache | 4096 / 开启（Mamba align） | 2048 / 关闭 |
+| NCCL P2P | 开启（`NCCL_P2P_DISABLE=0`） | 关闭 |
+| KV 字节/卡 | 3,039,750,144 | 2,928,199,680 |
+| 多模态 | 图片 ≤2/请求，视频 0 | 仅文本 |
+| 验证 | 维护者本机生产使用；**此镜像未单独跑公开分阶段 GPU 门禁** | 分阶段 GPU 质量门禁（`validation/stage-*`） |
+| 启动方式 | 下文 `docker run` | `python3 -I launcher.py` |
 
-使用方法（Linux x86_64、Docker + NVIDIA Container Toolkit、2 × SM120 16GB GPU、驱动 ≥ 595.84、
-可用内存 ≥ 28 GB；以普通用户运行）：
+### 生产版 2026-09-23 用法
+
+要求：Linux x86_64、Docker + NVIDIA Container Toolkit、2 × SM120 16GB GPU（实测 2 × RTX 5070 Ti，驱动 610.57.04）、
+两卡空闲（`--kv-cache-memory-bytes` 固定，按独占双卡设计）。
+
+```bash
+# 1) 下载固定 revision 权重（约 21 GiB）
+huggingface-cli download nvidia/Qwen3.8-27B-NVFP4 \
+  --revision dbb8f445b3145f8a4c18ddc769f032d57d32867c --local-dir ~/models/qwen38-27b-nvidia-nvfp4
+
+# 2) 按 digest 拉取并运行（OpenAI 兼容 API: http://127.0.0.1:8000/v1）
+mkdir -p ~/.cache/qwen38-prod/cache ~/.cache/qwen38-prod/results
+docker run --rm --init --name qwen38-27b \
+  --gpus '"device=0,1"' --shm-size 1g --ulimit memlock=67108864:67108864 \
+  --cpus 8 --memory 45g --memory-swap 45g --user "$(id -u):$(id -g)" \
+  -p 127.0.0.1:8000:8000 \
+  -v ~/models/qwen38-27b-nvidia-nvfp4:/candidate-model:ro \
+  -v ~/.cache/qwen38-prod/cache:/cache -v ~/.cache/qwen38-prod/results:/results \
+  ghcr.io/wjxssb/qwen38-27b-vllm@sha256:2885b96300204e1d67c4d6190fe15346e760704af2d904acaa2be2b0daf0892b
+```
+
+- 入口 `/candidate/entry.py` 启动前逐文件校验 38 个烘焙文件的 SHA-256（日志 `NVIDIA_CANDIDATE_OVERLAY_INTEGRITY_PASS`），
+  并拒绝非 vLLM API server 的命令；默认 CMD 即生产 argv（`profiles/production-dense-recovery-20260923/graph-prefix.json`）。
+- served 模型名 `unsloth/Qwen3.8-27B-NVFP4`（与本机生产一致）。
+- 镜像只含推理服务本身。本机生产额外的 P2P 门禁、90 秒推进看门狗、有界自动恢复、Gateway/relay 均在宿主机，
+  不在镜像内；主板不支持 P2P 时 NCCL 会自行回退。
+- 构建源：[`image/prod-dense-20260923/`](image/prod-dense-20260923/)（`gen_dockerfile.py` 由钉死的 profile 文件生成 Dockerfile）。
+
+### v1.0.0 用法
 
 ```bash
 git clone https://github.com/wjxssb/qwen38-27b-dual-gpu-vllm.git
@@ -38,10 +64,9 @@ python3 -I launcher.py                   # 前台启动 http://127.0.0.1:8000/v1
 python3 -I launcher.py --stop            # 另一终端停止；Ctrl-C 也可
 ```
 
-`launcher.py` 按 `release.json` 中的 digest 拉取镜像，校验镜像内 `/opt/qwen38-runtime/release.json`
-的 SHA-256，只接受已验证模式（`mtp3-graph`、`eager-baseline`），选中的 GPU 有其他计算进程或空闲显存不足时拒绝启动。
-手动 `docker run` 等价命令与已知问题见 `v1.0.0` tag 的 README 与 [RELEASE_NOTES.md](RELEASE_NOTES.md)。
-一致性由 `tests/public_release_contract_cpu.py` 守护（无需 GPU/网络）。
+`launcher.py` 只服务 v1.0.0：按 `release.json` 的 digest 拉取并校验镜像内契约。
+手动 `docker run` 与已知问题见 `v1.0.0` tag 的 README 与 [RELEASE_NOTES.md](RELEASE_NOTES.md)。
+两个版本的仓库内一致性由 `tests/public_release_contract_cpu.py` 守护（无需 GPU/网络）。
 
 ## 当前记录（2026-09-23 晋升）
 

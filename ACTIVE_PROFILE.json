@@ -39,15 +39,24 @@
   },
   "api": {
     "gateway": "http://127.0.0.1:18080/v1",
-    "compat": ["18081 -> 18080", "18094 -> 18080"],
+    "compat": [
+      "18081 -> 18080",
+      "18094 -> 18080"
+    ],
     "relay": "18082 -> 18096 (HTTP/SSE)",
     "backend": 18096
   },
   "distribution": {
-    "public_image": null,
+    "public_image": {
+      "image": "ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3-prod-20260923",
+      "image_digest": "sha256:2885b96300204e1d67c4d6190fe15346e760704af2d904acaa2be2b0daf0892b",
+      "record": "image/prod-dense-20260923/image.json",
+      "composition": "host base image with the 29 overlay files and inspection package baked in (same bytes as the host bind mounts); host supervision is not included",
+      "gpu_validation_of_image": "not run (maintainer request); host production uses the same base, overlay bytes and argv"
+    },
     "host_image_id": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
     "host_image_tag": "localhost/frank/vllm-nvfp4-kv-sm120:stability-core-v1-immutable",
-    "composition": "host-only base image + 29 read-only overlay bind mounts (overlay-integrity.json) + inspection package mount + host launcher/supervisor/recovery + nvidia/Qwen3.8-27B-NVFP4 weights",
+    "composition": "host production: base image + 29 read-only overlay bind mounts (overlay-integrity.json) + inspection package mount + host launcher/supervisor/recovery + nvidia/Qwen3.8-27B-NVFP4 weights",
     "public_release": {
       "record": "release.json",
       "tag": "v1.0.0",
@@ -55,7 +64,7 @@
       "image_digest": "sha256:275913ba1639a37a1364114432de1fbbe6786a6407f133e3cabe0a3e6f2104ff",
       "entry": "python3 -I launcher.py"
     },
-    "note": "This profile has not been published as an image. The only pullable image is the v1.0.0 release, which runs a different (2026-09-05 validated) configuration."
+    "note": "This profile is published as public_image. The v1.0.0 release (public_release) remains available and runs the older 2026-09-05 configuration via launcher.py."
   },
   "managed_entry": {
     "distribution": "host-only",
@@ -68,7 +77,10 @@
     "immutable": true
   },
   "hardware": {
-    "gpus": ["RTX 5070 Ti", "RTX 5070 Ti"],
+    "gpus": [
+      "RTX 5070 Ti",
+      "RTX 5070 Ti"
+    ],
     "topology": "PHB"
   },
   "review": {

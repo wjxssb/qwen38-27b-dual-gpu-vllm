@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "image": "ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3-prod-20260923",
+  "image_digest": "sha256:2885b96300204e1d67c4d6190fe15346e760704af2d904acaa2be2b0daf0892b",
+  "platform_manifest_digest": "sha256:c7ee1ffc9a0066f038cbbff4e87ea1912eff6db7a2b5259bc4dc7c68dc54bddb",
+  "config_digest": "sha256:638df36a7c98f930e0e93764e4b04c036afd8de8cf6a3de72ed0e603da98e6ee",
+  "published_at": "2026-10-01",
+  "base_image_id": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
+  "profile": "profiles/production-dense-recovery-20260923",
+  "profile_entry": "graph-prefix",
+  "runtime_manifest_sha256": "053466c0ea4101f3c53bc22d4550e3474e3b3a431f99b62bda995737e17350ef",
+  "baked_files": 38,
+  "model": {"repo_id": "nvidia/Qwen3.8-27B-NVFP4", "revision": "dbb8f445b3145f8a4c18ddc769f032d57d32867c", "mount": "/candidate-model"},
+  "served_model_name": "unsloth/Qwen3.8-27B-NVFP4",
+  "verification": {
+    "build": "every baked file length+SHA-256 checked against overlay-integrity.json/inspection-integrity.json; base identity checked by its overlay-manifest SHA",
+    "cpu_smoke": "entry.py integrity PASS in a no-GPU, no-network container; non-vLLM argv refused; image CMD equals graph-prefix argv",
+    "registry": "anonymous pull token: index, platform manifest, config and all 62 layers retrievable",
+    "gpu": "not run for this image by request; the same base image, overlay bytes and argv are what the maintainer runs in host production"
+  },
+  "not_included": ["host P2P gate", "90 s progress watchdog and bounded recovery", "gateway/relay", "model weights"]
+}

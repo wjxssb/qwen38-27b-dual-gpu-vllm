@@ -21,10 +21,12 @@
   control-binding 副本）、`legacy/production-dense-grouped-20260922/`、`docs/`（优化史、失败与
   否决想法、XID13 调查、恢复架构、参考 harness）、`validation/production-dense-recovery-20260923/`。
   `runs/`、`state/`、`cache-blessed/`、遥测与私有 relay 代码仍仅限宿主机。
-- **镜像未更新**：本次生产 profile 没有发布为容器镜像。GHCR 上唯一可拉取的仍是 v1.0.0
-  `ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3@sha256:275913ba…04ff`（2026-09-06 发布，
-  unsloth 模型、chunk 2048、无 Prefix Cache、P2P 关闭）；外部用户用 `python3 -I launcher.py` 运行它。
-  2026-10-01 复核：镜像匿名可拉、镜像内契约 SHA 与 `release.json` 一致、固定模型 revision 在 HF 上仍公开可下载。
+- **新镜像已发布（2026-10-01）**：`ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3-prod-20260923@sha256:2885b963…892b`。
+  把本机生产 profile `graph-prefix` 原样烘焙（基础镜像 `b6190f10…` + 29 个 overlay + 检查插件，38 个文件逐一 SHA 校验），
+  默认 CMD 即生产 argv，模型挂载到 `/candidate-model`（`nvidia/Qwen3.8-27B-NVFP4@dbb8f445`）。
+  此镜像按维护者要求未单独跑 GPU 门禁；依据是本机生产在用同一基础镜像、同一 overlay 字节和 argv。
+  CPU 冒烟：入口完整性校验 PASS、非 vLLM 命令被拒；匿名可拉取全部 62 层。宿主机 P2P 门禁、看门狗、恢复、Gateway 不在镜像内。
+  记录：`image/prod-dense-20260923/image.json`。v1.0.0 标签与 digest 保持不变。
 
 ---
 

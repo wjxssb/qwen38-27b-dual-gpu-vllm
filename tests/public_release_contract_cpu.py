@@ -8,6 +8,7 @@ import importlib.util
 import json
 from pathlib import Path
 import re
+import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -55,13 +56,30 @@ class PublicRelease(unittest.TestCase):
         code = self.launcher.DOWNLOAD_CODE
         self.assertIn('"%s", "%s"' % (self.release['model']['repo_id'], self.release['model']['revision']), code)
 
-    def test_host_profile_is_not_presented_as_public_image(self):
+    def test_production_image_record_is_consistent(self):
+        record = json.loads((ROOT / 'image/prod-dense-20260923/image.json').read_text())
         active = json.loads((ROOT / 'ACTIVE_PROFILE.json').read_text())
-        dist = active['distribution']
-        self.assertIsNone(dist['public_image'])
-        self.assertEqual(dist['public_release']['image_digest'], self.release['image_digest'])
-        self.assertTrue(re.fullmatch(r'sha256:[0-9a-f]{64}', dist['host_image_id']))
-        self.assertNotEqual(dist['host_image_id'], self.release['image_digest'])
+        public = active['distribution']['public_image']
+        self.assertRegex(record['image_digest'], r'^sha256:[0-9a-f]{64}$')
+        self.assertEqual(public['image_digest'], record['image_digest'])
+        self.assertEqual(active['distribution']['public_release']['image_digest'], self.release['image_digest'])
+        self.assertEqual(record['runtime_manifest_sha256'], active['manifest_sha256'])
+        self.assertEqual(record['model']['revision'], active['model']['revision'])
+        self.assertIn('qwen38-27b-vllm@' + record['image_digest'], (ROOT / 'README.md').read_text())
+
+    def test_production_dockerfile_is_generated_from_pinned_profile(self):
+        here = ROOT / 'image/prod-dense-20260923'
+        committed = (here / 'Dockerfile').read_text()
+        spec = importlib.util.spec_from_file_location('gen_dockerfile', here / 'gen_dockerfile.py')
+        gen = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(gen)
+        with tempfile.TemporaryDirectory() as tmp:
+            gen.HERE = Path(tmp)
+            gen.PROFILE = ROOT / 'profiles/production-dense-recovery-20260923'
+            gen.main()
+            self.assertEqual((Path(tmp) / 'Dockerfile').read_text(), committed)
+        argv = json.loads((gen.PROFILE / 'graph-prefix.json').read_text())['argv']
+        self.assertIn('CMD ' + json.dumps(argv), committed)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,16 @@
+{
+  "scope": "OWNED_SINGLE_API_PROCESS_INSPECTION_ADMISSION_ONLY",
+  "required_api_process_count": 1,
+  "required_environment": {
+    "VLLM_ENABLE_RESPONSES_API_STORE": "0"
+  },
+  "inspection_source_directory": "inspection-repair-v5",
+  "host_collector_source_allowlist_update_required": true,
+  "native_frontend_count": "AsyncLLM.output_processor.get_num_unfinished_requests == 0 under exclusive HTTP lease",
+  "worker_scheduler_cuda_quiescence": "NOT_PROVEN_BY_HTTP_LEASE_OR_FRONTEND_COUNT",
+  "actual_runtime_activation": "NOT_EXECUTED",
+  "unknown_audit_rpc_outcome": "BLOCK_ALL_NON_READ_HTTP_REQUESTS_NO_RESET_NO_AUTORETRY",
+  "known_rpc_return_then_delivery_failure": "RECORD_SEPARATELY_REPLAY_ID_REJECTED_NO_GPU_POISON",
+  "application_error_incomplete_or_cancelled": "BLOCK_FUTURE_AUDIT_ONLY_NO_AUTO_CLEAR",
+  "protected_gpu_lifecycle": "CURRENT_BOOT_INCIDENT_ADMISSION_AND_ROOT_OWNERSHIP_STILL_REQUIRED"
+}

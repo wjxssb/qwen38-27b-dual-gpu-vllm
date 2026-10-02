@@ -1,0 +1,162 @@
+{
+  "schema": 1,
+  "scope": "SEALED_CPU_INSPECTION_ADMISSION_REPAIR_V5_ONLY",
+  "base_manifest_sha256": "cca915e47656ad00866c9ebfb673d808b77c1cfb18f626bd2ed9d349f8f39e2c",
+  "cpu_test_count": 55,
+  "native_image_cpu_contract": "PASS",
+  "gpu_execution": "NOT_EXECUTED",
+  "xid_root_cause": "NOT_ATTRIBUTED",
+  "prior_async_stall_root_cause": "NOT_ATTRIBUTED",
+  "files": [
+    {
+      "path": "ASSEMBLY_REQUIREMENTS.json",
+      "bytes": 915,
+      "sha256": "c54b8f39801d6023ffd913c265ec2485d9caf12b2202146750af972e2b76dad0"
+    },
+    {
+      "path": "BASE_MANIFEST.json",
+      "bytes": 2639,
+      "sha256": "cca915e47656ad00866c9ebfb673d808b77c1cfb18f626bd2ed9d349f8f39e2c"
+    },
+    {
+      "path": "FINDINGS.md",
+      "bytes": 9318,
+      "sha256": "49550741e58c41e908a20fd692d8dc068f3ff4c8b2aec9c71de9d30a9b997d5f"
+    },
+    {
+      "path": "MAPPING_EXPECTATIONS.json",
+      "bytes": 889082,
+      "sha256": "8ec1872771149d95fc51b6e6a937a97048434b79e2de74c4520347f3dbb25f9d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 12605,
+      "sha256": "ea892639210ca0a8c9f66447853ebcba235b9158b70d00de1404968883c2167d"
+    },
+    {
+      "path": "SAVED_EVIDENCE.json",
+      "bytes": 11933,
+      "sha256": "7b1810dacd017080fdf949d1741a0b325bcbe0b25c097d7c9de1c08cc5a7ff0c"
+    },
+    {
+      "path": "SOURCE_DIFF.patch",
+      "bytes": 11099,
+      "sha256": "8254f2c20cf63bfe052b710c1299d69c31413d8904c5abf8284be4f75fa04881"
+    },
+    {
+      "path": "build_expectations.py",
+      "bytes": 5086,
+      "sha256": "6847d875f6b938f4162114d150978e2c9502f2a4039a68af1833dddcfb7bff6f"
+    },
+    {
+      "path": "build_saved_evidence.py",
+      "bytes": 5720,
+      "sha256": "c29da61093eafa86ca2f7fbca6f06ce7ca86e437db846aea3fd9f2457e7c8181"
+    },
+    {
+      "path": "check_observations.py",
+      "bytes": 5668,
+      "sha256": "18e2427ce51298752a0cabb78de58aadd82b01a994627b5728d7c6ca2522a12a"
+    },
+    {
+      "path": "check_transport.py",
+      "bytes": 697,
+      "sha256": "204e007399ac882f7e08ede867662c1552347ec6a964df8eca7ceac307738ad2"
+    },
+    {
+      "path": "cpu-tests-v5.txt",
+      "bytes": 8187,
+      "sha256": "5424601475c96c8ec40ecbc464603144a3eb3889f4e4de5869ab8ff62ef9c389"
+    },
+    {
+      "path": "image-cpu-receipt.json",
+      "bytes": 2483,
+      "sha256": "01f207d48c475fb9d8e53ed99d863d4f8b9bc5c6b1565fe830e0a43db4e3ec3d"
+    },
+    {
+      "path": "image-cpu-validation.txt",
+      "bytes": 2620,
+      "sha256": "96a1a359c1c99f4505e0e2952b18f7c8eacfdb2789170d6dbc63a4f2f13db2bd"
+    },
+    {
+      "path": "nvidia_runtime_inspection/__init__.py",
+      "bytes": 99,
+      "sha256": "2839d2b7632c39bc5d5b20ef1627ae12acbd305c9aa10b00433720a24bad1df7"
+    },
+    {
+      "path": "nvidia_runtime_inspection/admission.py",
+      "bytes": 7150,
+      "sha256": "1445014db260609523fb5e18c7beba21d0087c234fc94ff07362c4545a7a26c3"
+    },
+    {
+      "path": "nvidia_runtime_inspection/collector.py",
+      "bytes": 16054,
+      "sha256": "040913d5c5bf7287e484bd1df1a090a77f12ed82755f19952a602e6bf11cf753"
+    },
+    {
+      "path": "nvidia_runtime_inspection/endpoint.py",
+      "bytes": 4380,
+      "sha256": "9c70fe4142753deec2bd45962f5520e5a00d0fe6d4088dec58fb46f011a09394"
+    },
+    {
+      "path": "nvidia_runtime_inspection/sampler.py",
+      "bytes": 5930,
+      "sha256": "f5b919b8a11a7afc36396a49655ef6eca7b12f7c0e53d61bba57954ed77784cf"
+    },
+    {
+      "path": "nvidia_runtime_inspection/transport.py",
+      "bytes": 10949,
+      "sha256": "1193c3245e12ec1c1b28d247acbf8052f1604bd90561c7ff0d2e0a5600f5dac3"
+    },
+    {
+      "path": "nvidia_runtime_inspection-0.1.0.dist-info/METADATA",
+      "bytes": 130,
+      "sha256": "2749621dc3d8037c6a5f3aebcf274252fc71500815998f80c43a520f410c157e"
+    },
+    {
+      "path": "nvidia_runtime_inspection-0.1.0.dist-info/entry_points.txt",
+      "bytes": 106,
+      "sha256": "1baf47f9bba96ea63d62f33d3f8db5f1bf646988a993824f0ced3e5507173c17"
+    },
+    {
+      "path": "nvidia_runtime_inspection-0.1.0.dist-info/top_level.txt",
+      "bytes": 26,
+      "sha256": "00490dd14480ae3f25d33c486ec8cf658f615ba51acdbb2fc3bc63e71a540651"
+    },
+    {
+      "path": "test_admission_cpu.py",
+      "bytes": 17358,
+      "sha256": "44f96fa8d21f860cc2164080098d03bd9ab536e99dc98d0b4abf36ea2cea0603"
+    },
+    {
+      "path": "test_inspection_cpu.py",
+      "bytes": 23598,
+      "sha256": "251896f3bd166df2d88011457e01fe08f371242c7fa66a0f3d4f9fd8b3b2751c"
+    },
+    {
+      "path": "validate_image_cpu.py",
+      "bytes": 9551,
+      "sha256": "4a01d400f7663863576c352b38867438e48d7e9a9199f98f96f078985518e4e9"
+    },
+    {
+      "path": "validation-first/image-cpu-receipt.json",
+      "bytes": 1682,
+      "sha256": "e277d464105e2b47945d7379c4918b9d3a73ffd3d7f45e133d303c9048f6ff87"
+    },
+    {
+      "path": "validation-first/image-cpu-validation.txt",
+      "bytes": 2443,
+      "sha256": "cf310fb7c91f6c7d9ab090d9b5db953b4b98582c1ab2efeecafc2ecdcc671a05"
+    },
+    {
+      "path": "validation-peer-intermediate/image-cpu-receipt.json",
+      "bytes": 2482,
+      "sha256": "041e4a9edddc0740c6c8bd3a45be0ff4d054c4cfbc5672dd58bfa5fccae6e10d"
+    },
+    {
+      "path": "validation-peer-intermediate/image-cpu-validation.txt",
+      "bytes": 2620,
+      "sha256": "ef2dbd8963f5baabd1c1d80fcb467d63db3bdce9827274f72f455ca73e9eeee4"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+[vllm.endpoint_plugins]
+nvidia_runtime_inspection = nvidia_runtime_inspection.endpoint:InspectionEndpoint

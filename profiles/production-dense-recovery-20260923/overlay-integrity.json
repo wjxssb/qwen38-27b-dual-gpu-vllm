@@ -1,0 +1,176 @@
+[
+  {
+    "bytes": 1607,
+    "path": "overlay/flashinfer/autotuner/_fatal_cuda.py",
+    "sha256": "10515c8cbadc3833ed1db99a67fc706628d5917977ddb1266cbb7934e3f14bc8",
+    "target": "/usr/local/lib/python3.12/dist-packages/flashinfer/autotuner/_fatal_cuda.py"
+  },
+  {
+    "bytes": 108157,
+    "path": "overlay/flashinfer/autotuner/autotuner.py",
+    "sha256": "f75260a6688c5ff7bc1a3e0968c9d5e9463e30676bdb59b824c9e9489030c23d",
+    "target": "/usr/local/lib/python3.12/dist-packages/flashinfer/autotuner/autotuner.py"
+  },
+  {
+    "bytes": 324836,
+    "path": "overlay/flashinfer/gemm/gemm_base.py",
+    "sha256": "9144f082aab3095580eac0ebd62b52e9c6dfba02b9c50bd710dd67f2ae935393",
+    "target": "/usr/local/lib/python3.12/dist-packages/flashinfer/gemm/gemm_base.py"
+  },
+  {
+    "bytes": 6541,
+    "path": "overlay/vllm/entrypoints/launcher.py",
+    "sha256": "fc5c4d02fbfd3cfedde5223cf93628e99d1d6eead58cb1a6b270273caf0c912b",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/launcher.py"
+  },
+  {
+    "bytes": 51050,
+    "path": "overlay/vllm/entrypoints/openai/chat_completion/protocol.py",
+    "sha256": "2e6dcdf455e354ff1684b407e20eb13415408e6b1ee1dee3d0c92ac3ff704d37",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/openai/chat_completion/protocol.py"
+  },
+  {
+    "bytes": 14576,
+    "path": "overlay/vllm/entrypoints/serve/utils/api_utils.py",
+    "sha256": "fdac0a0be9194e056f69c82cd4a1437ff6a556e53e40fccb6d4c7ccde9ced25e",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/serve/utils/api_utils.py"
+  },
+  {
+    "bytes": 66317,
+    "path": "overlay/vllm/model_executor/layers/linear.py",
+    "sha256": "5b7f3cd063fc7d9f343578e94f40a6e9200852cf1780b8ceea7d1e5d38d5e58b",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/linear.py"
+  },
+  {
+    "bytes": 68291,
+    "path": "overlay/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py",
+    "sha256": "2c45cfcf5c11ebfbca32465f76a3688e50f34e7ee2b72f2df5bb240877ef2ab0",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/mamba/gdn/qwen_gdn_linear_attn.py"
+  },
+  {
+    "bytes": 51369,
+    "path": "overlay/vllm/model_executor/layers/mamba/ops/causal_conv1d.py",
+    "sha256": "63e8904b598b62b42b42779d6ccb96825c318ca4266849b228cd98d42f1420b2",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/layers/mamba/ops/causal_conv1d.py"
+  },
+  {
+    "bytes": 41656,
+    "path": "overlay/vllm/model_executor/models/qwen3_next.py",
+    "sha256": "6041a346f0e9f93e19977d6832a43bd120f5f31d32a4c27614fabd4390963100",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/model_executor/models/qwen3_next.py"
+  },
+  {
+    "bytes": 51129,
+    "path": "overlay/vllm/nvidia_causal_conv_original.py",
+    "sha256": "044d005cfe59fd0818ed421274e04f3e8dd679b8cdb64fca9f4422f2643484b2",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/nvidia_causal_conv_original.py"
+  },
+  {
+    "bytes": 7882,
+    "path": "overlay/vllm/nvidia_causal_conv_precision_check.py",
+    "sha256": "354fbb76f2c73cdc3b822ad891b96a5190eb9fa71abc7ae38189f0c5b0a3df66",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/nvidia_causal_conv_precision_check.py"
+  },
+  {
+    "bytes": 5341,
+    "path": "overlay/vllm/nvidia_numeric_focus.py",
+    "sha256": "02d2eb3f979cbd1ea77133a0e621757c1308a566eab0e56196ebf4abbb0a2987",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/nvidia_numeric_focus.py"
+  },
+  {
+    "bytes": 1971,
+    "path": "overlay/vllm/nvidia_startup_guard.py",
+    "sha256": "9d339fc4516fa094deb8901d5badc773e0c973db24d939eb5de3dab2a9de0cae",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/nvidia_startup_guard.py"
+  },
+  {
+    "bytes": 13229,
+    "path": "overlay/vllm/stability_telemetry.py",
+    "sha256": "3bfd77d9864769aed81ac50fcb6ffc078f77c7657ce6cec2ccc698a4670329b6",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/stability_telemetry.py"
+  },
+  {
+    "bytes": 1416,
+    "path": "overlay/vllm/third_party/flash_linear_attention/ops/index.py",
+    "sha256": "54aa48bdcfadb470d0756c7c4888b1f5694dd06f5bb21ec5d5949f6cb9fe9d20",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/third_party/flash_linear_attention/ops/index.py"
+  },
+  {
+    "bytes": 149424,
+    "path": "overlay/vllm/v1/attention/backends/flashinfer.py",
+    "sha256": "988acda16b312cd5beb3a28e2cf8c0745189b1ffd780fc51e2c98d68c32e3484",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/flashinfer.py"
+  },
+  {
+    "bytes": 23995,
+    "path": "overlay/vllm/v1/attention/backends/gdn_attn.py",
+    "sha256": "0e4a1609dea02b707a372356040c2e4fac3b9635162db0045b77a41b4c337bb7",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/attention/backends/gdn_attn.py"
+  },
+  {
+    "bytes": 49011,
+    "path": "overlay/vllm/v1/engine/async_llm.py",
+    "sha256": "6db7bd5d1962f913388a13d5a5366070e1dbbd43291a4b95558e5391ed135d67",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/async_llm.py"
+  },
+  {
+    "bytes": 120429,
+    "path": "overlay/vllm/v1/engine/core.py",
+    "sha256": "17d4be15fa76d3bc07a6ad32fb9bb7e701bcf48b897893b1a3f4b87f4fd173ec",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core.py"
+  },
+  {
+    "bytes": 79185,
+    "path": "overlay/vllm/v1/engine/core_client.py",
+    "sha256": "8040df8f86c0a546b90a17afd5f0d9f005c27c590a47c9d631ae7018d98a3a9a",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/core_client.py"
+  },
+  {
+    "bytes": 140290,
+    "path": "overlay/vllm/v1/executor/multiproc_executor.py",
+    "sha256": "f44d0c5ec8cb92c4a86e6e20d9732bfde7866717ffe94588269e10af51f16d9b",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/executor/multiproc_executor.py"
+  },
+  {
+    "bytes": 10852,
+    "path": "overlay/vllm/v1/structured_output/backend_guidance.py",
+    "sha256": "3ea71c1d0b34e806d7c4844a188395e478de3daff487b5b708025696c68aad34",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/structured_output/backend_guidance.py"
+  },
+  {
+    "bytes": 390117,
+    "path": "overlay/vllm/v1/worker/gpu_model_runner.py",
+    "sha256": "0b83188453877907d908c211e6952c0aa5ce4ee3ada1cb81b6198ae884cf2d46",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_model_runner.py"
+  },
+  {
+    "bytes": 66264,
+    "path": "overlay/vllm/v1/worker/gpu_worker.py",
+    "sha256": "331c13ca7f454885c16685a99b516ff3f86e25fd91e145d40166bbf648cc5591",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/worker/gpu_worker.py"
+  },
+  {
+    "bytes": 88543,
+    "path": "overlay/vllm/v1/spec_decode/llm_base_proposer.py",
+    "sha256": "1d34d33961259073ed62775f9f86e0bb950260d8d51723fc6ce972d61dc813cf",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/spec_decode/llm_base_proposer.py"
+  },
+  {
+    "bytes": 15509,
+    "path": "overlay/vllm/v1/spec_decode/sm120_mtp_decode_graph.py",
+    "sha256": "1704183d4a6cafeed59c2c20ec9f3e52b3200d378542d1ab9d32d9109778550a",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/spec_decode/sm120_mtp_decode_graph.py"
+  },
+  {
+    "path": "overlay/vllm/renderers/base.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/renderers/base.py",
+    "bytes": 40459,
+    "sha256": "b073d1c23321542a56836295250d00e8822bc75bb25a07aa3a3a91086846bb90"
+  },
+  {
+    "path": "overlay/vllm/v1/engine/utils.py",
+    "target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/engine/utils.py",
+    "bytes": 54972,
+    "sha256": "5497f435df7fc95b5c3a710ff803ecf96e441f0f2fde38c96df9b475a2e4a80f"
+  }
+]

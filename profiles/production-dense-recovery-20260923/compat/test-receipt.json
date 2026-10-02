@@ -1,0 +1,37 @@
+{
+  "recorded_utc": "2026-09-13T10:25:15.062581+00:00",
+  "command": "python3 /home/frank/ai/qwen38-27b-nvidia-migration-20260913/candidate/compat/test_request_adapter.py",
+  "observed_exit_code": 0,
+  "tests_run": 12,
+  "failures": 0,
+  "errors": 0,
+  "evidence_origin": "Captured subprocess output of the actual test command after invalid-auto request preservation fix.",
+  "scope": "CPU-only pure request body adapter and Jinja/template compatibility; no HTTP/SSE transport or inference execution",
+  "deployed": false,
+  "production_imported": false,
+  "candidate_launcher_imported": false,
+  "sources": [
+    {
+      "path": "/home/frank/ai/qwen38-27b-nvidia-migration-20260913/candidate/compat/request_adapter.py",
+      "sha256": "44f01c6685305d215c4768c6a3e9ca53b6ff3a6f6f87169fced23e0c44be0f81"
+    },
+    {
+      "path": "/home/frank/ai/qwen38-27b-nvidia-migration-20260913/candidate/compat/test_request_adapter.py",
+      "sha256": "1b9615c16a4649592ea32f357a4cd1e9161db5e21ece70f8b51f0d5d3f10e90e"
+    },
+    {
+      "path": "/home/frank/ai/qwen38-27b-nvidia-migration-20260913/patch-audit/image-vllm/renderers/params.py",
+      "sha256": "b9667d21614cc474e881124b44762db6a1d43efe21b9ec0350fc5c80229bf67d"
+    },
+    {
+      "path": "/home/frank/ai/qwen38-27b-nvidia-migration-20260913/patch-audit/image-vllm/entrypoints/openai/chat_completion/protocol.py",
+      "sha256": "bcb7162f083c001e001d1c8eb3eb214e6e7b391ff84d0968ea9336cca63e721f"
+    },
+    {
+      "path": "/home/frank/ai/models/qwen38-27b-nvidia-nvfp4/chat_template.jinja",
+      "sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041"
+    }
+  ],
+  "stdout": "",
+  "stderr": "test_ambiguous_or_invalid_requests_rejected (__main__.AdapterTests.test_ambiguous_or_invalid_requests_rejected) ... ok\ntest_disabled_thinking_preserved (__main__.AdapterTests.test_disabled_thinking_preserved) ... ok\ntest_exact_other_bytes_stream_images_tools_and_number_spellings (__main__.AdapterTests.test_exact_other_bytes_stream_images_tools_and_number_spellings) ... ok\ntest_high_uses_native_xhigh (__main__.AdapterTests.test_high_uses_native_xhigh) ... ok\ntest_invalid_top_auto_does_not_activate_nested_alias (__main__.AdapterTests.test_invalid_top_auto_does_not_activate_nested_alias) ... ok\ntest_none_or_absent_top_uses_nested_high (__main__.AdapterTests.test_none_or_absent_top_uses_nested_high) ... ok\ntest_roles_are_not_rewritten (__main__.AdapterTests.test_roles_are_not_rewritten) ... ok\ntest_scope_other_model_unchanged (__main__.AdapterTests.test_scope_other_model_unchanged) ... ok\ntest_supported_and_unknown_values_untouched (__main__.AdapterTests.test_supported_and_unknown_values_untouched) ... ok\ntest_top_high_overrides_nested_low (__main__.AdapterTests.test_top_high_overrides_nested_low) ... ok\ntest_top_low_shadows_nested_high_without_mutation (__main__.AdapterTests.test_top_low_shadows_nested_high_without_mutation) ... ok\ntest_unicode_and_escaped_high (__main__.AdapterTests.test_unicode_and_escaped_high) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.002s\n\nOK\n"
+}

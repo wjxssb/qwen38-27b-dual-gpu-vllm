@@ -1,0 +1,22 @@
+NVIDIA Qwen3.8 27B NVFP4 唯一生产入口
+
+当前模型：nvidia/Qwen3.8-27B-NVFP4（统一 API 模型 ID：qwen38-27b-dense），双 GPU TP2。
+启动：/home/frank/nvidia-dense-runtime/inference-control start
+停止：/home/frank/nvidia-dense-runtime/inference-control stop
+重启：/home/frank/nvidia-dense-runtime/inference-control restart
+状态：/home/frank/nvidia-dense-runtime/inference-control status
+日志：/home/frank/nvidia-dense-runtime/inference-control logs
+
+统一 API：http://127.0.0.1:18080/v1
+兼容 API：18081、18094 转到 18080；18082 为 NVIDIA SSE relay；18096 为唯一推理后端。
+旧 Flash、Unsloth model ID 仅作为同一 NVIDIA 后端的 API 别名。
+启动目标：nvidia-inference.target，由 Gateway 恢复唯一 NVFP4。
+旧 Flash unit、旧 monitor 已屏蔽，不应重新启用。
+
+当前迁移结果与验收进度：
+/home/frank/nvidia-dense-runtime/closeout-migration-20260914/unique-production-migration/
+历史配置、事故和修复知识：/home/frank/nvidia-runtime-history/
+历史材料只作参考，不是生产回滚入口。回滚只允许冻结的同一 NVIDIA NVFP4 基线。
+
+公开记录仓库：https://github.com/wjxssb/qwen38-27b-dual-gpu-vllm
+（2026-09-16 更新：dense 本地栈的当前 profile、修复与验收记录；大体积 runtime/ 状态不随仓库分发。）

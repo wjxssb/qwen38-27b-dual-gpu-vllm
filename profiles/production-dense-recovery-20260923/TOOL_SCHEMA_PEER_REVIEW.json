@@ -1,0 +1,21 @@
+{
+  "scope": "INDEPENDENT_TOOL_SCHEMA_SOURCE_AND_PINNED_IMAGE_CPU_REVIEW",
+  "status": "PASS",
+  "at_unix": 1789334007.8406396,
+  "author_manifest": {
+    "path": "tool-schema-repair/MANIFEST.json",
+    "sha256": "2082b90e04de54d9c2732968cbda8ec5006d7bffc627a46e0a6e844eee1ad992",
+    "all_files_verified": true
+  },
+  "native_cpu_receipt": {
+    "path": "tool-schema-peer-review/run-1789333872484221685/receipt.json",
+    "sha256": "cabcfa30f37187172dfa88120bc6e602f9becd0a99de161c5a91031c3f6df742",
+    "elapsed_seconds": 9.419818639755249
+  },
+  "approved_source_sha256": {
+    "vllm/entrypoints/openai/chat_completion/protocol.py": "2e6dcdf455e354ff1684b407e20eb13415408e6b1ee1dee3d0c92ac3ff704d37",
+    "vllm/v1/structured_output/backend_guidance.py": "3ea71c1d0b34e806d7c4844a188395e478de3daff487b5b708025696c68aad34"
+  },
+  "gpu_or_model_execution": "NOT_EXECUTED",
+  "candidate_runtime_qualification": "NOT_PROVEN"
+}

@@ -1,0 +1,4 @@
+Metadata-Version: 2.1
+Name: nvidia-runtime-inspection
+Version: 0.1.0
+Summary: Isolated NVIDIA checkpoint runtime observation only

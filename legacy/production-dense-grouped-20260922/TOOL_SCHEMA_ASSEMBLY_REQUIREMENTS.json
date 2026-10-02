@@ -1,0 +1,35 @@
+{
+  "scope": "TWO_NATIVE_CPU_SOURCE_OVERLAYS_ONLY",
+  "pinned_image": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
+  "base_source_sha256": {
+    "entrypoints/openai/chat_completion/protocol.py": "bcb7162f083c001e001d1c8eb3eb214e6e7b391ff84d0968ea9336cca63e721f",
+    "v1/structured_output/backend_guidance.py": "67fabdd26e59b2218f12309c30f9aeb688629538b64b90e4529e208644c7cf9a"
+  },
+  "overlay_files": [
+    {
+      "source": "overlay/vllm/entrypoints/openai/chat_completion/protocol.py",
+      "runtime_target": "/usr/local/lib/python3.12/dist-packages/vllm/entrypoints/openai/chat_completion/protocol.py",
+      "sha256": "2e6dcdf455e354ff1684b407e20eb13415408e6b1ee1dee3d0c92ac3ff704d37"
+    },
+    {
+      "source": "overlay/vllm/v1/structured_output/backend_guidance.py",
+      "runtime_target": "/usr/local/lib/python3.12/dist-packages/vllm/v1/structured_output/backend_guidance.py",
+      "sha256": "3ea71c1d0b34e806d7c4844a188395e478de3daff487b5b708025696c68aad34"
+    }
+  ],
+  "assembly_requirements": [
+    "Copy only the two overlay/vllm files into the next isolated candidate overlay; do not modify sealed v6/v7 sources.",
+    "Add the new native source paths and hashes to the candidate overlay/runtime integrity manifests and host source allowlist as required by the existing candidate design.",
+    "Preserve all other overlay files, inspection package, runtime arguments, API count/store guards, CUDA kernels, streams and collective behavior.",
+    "Run existing candidate assembly/attestation tests and the native CPU test command against the assembled candidate sources before activation.",
+    "This package is source/CPU verified only; malformed JSON/SSE rejection still requires live candidate observation during the separately authorized baseline.",
+    "Keep reproduction/assembled-candidate CPU receipts outside this sealed package; reuse the saved command with candidate overlay mount sources and external output capture, or test a copied package."
+  ],
+  "cpu_command": "python3 tool-schema-repair/run_cpu.py native-patched-regression validate_image_cpu.py --overlay",
+  "limitations": [
+    "Checks only malformed JSON Schema type keywords at actual tool-schema positions.",
+    "Retains tool_choice=none bypass.",
+    "Guidance supports only legacy structural tags; new format gets precise unsupported ValueError, not a speculative translation.",
+    "Other backend/engine error translation is unchanged."
+  ]
+}

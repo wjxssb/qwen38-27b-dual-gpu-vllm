@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "kind": "SUPERVISOR_NEARBY_REPAIRS",
+  "base_candidate": "candidate-v4",
+  "base_manifest_sha256": "639b7eda5ca7fe7eed9b1c1275cd85b05ff7095df614462aceec436d253838bd",
+  "scope": "CPU_REPAIRS_NOT_RUNTIME_QUALIFICATION",
+  "cpu_tests": 119,
+  "files": {
+    "CPU-TESTS.txt": {
+      "bytes": 219,
+      "sha256": "b25cd73de5fd4550bc704b31782c14deaeecacc2a65022d05d7ea1e98b76deec"
+    },
+    "EVIDENCE.json": {
+      "bytes": 3234,
+      "sha256": "16d7083c1255280696352338c0e064ba66126d734aba86b9a9c2ff7758f7e5e2"
+    },
+    "FINDINGS.md": {
+      "bytes": 5190,
+      "sha256": "e8ba89c9112f4f859f59d69436f2af90d5f56a54d85ba3e5239a89b77aaa9320"
+    },
+    "RECONCILIATION_SCHEMA.md": {
+      "bytes": 4294,
+      "sha256": "b951d7e10c566c60a16e240b34ddc2f26aad9850d97873b13654289ae21a9d36"
+    },
+    "REPAIR.patch": {
+      "bytes": 26883,
+      "sha256": "58a5c5e55d7d41418ef0bdcdbd75b35bd8afc26dd041721de741b76f8c923651"
+    },
+    "launcher.py": {
+      "bytes": 28790,
+      "sha256": "7476dcd7821cc7c6a106594fba145b44e15b38ea5dfd4ae909b6e97787228ca9"
+    },
+    "publish_prior_boot_reconciliation.py": {
+      "bytes": 3137,
+      "sha256": "08488ff9b3b3dae8cdbeb2e84ebf4c199ce0a0de691d60608fb3eff1be3921d5"
+    },
+    "supervisor.py": {
+      "bytes": 31246,
+      "sha256": "16e28dadf0668328d8168013eb5c690e9bc5c80bc921a315b09413a148b9a372"
+    },
+    "test_launcher_cpu.py": {
+      "bytes": 4590,
+      "sha256": "7e7132747bc68016ae5fd3c1f63e1960f3bdaec2f64760130e5e425ff03c4bd4"
+    },
+    "test_nearby_repairs_cpu.py": {
+      "bytes": 20227,
+      "sha256": "a60f2733df8812dde3f61a267f80f4b53e19baa9d4a3694ca7ab25490f16ab86"
+    },
+    "test_supervisor_cpu.py": {
+      "bytes": 23320,
+      "sha256": "60c8771e808c831ec0b2bb218a838bfbeca458414e26d39cc6c91943b8026c4e"
+    }
+  }
+}

@@ -1,133 +1,85 @@
 {
   "schema": 1,
-  "status": "HOST_MEMORY_REPAIR_ACTIVE_VERIFIED",
-  "release_name": "Qwen 27B \u65e5\u5e38\u7248\uff08P2P\uff0cchunk 2048\uff0cPrefix Cache\uff09",
-  "promoted_at": "2026-09-10T22:49:33.713395-07:00",
-  "prefix_caching": true,
-  "chunked_prefill": true,
-  "prefill_layer_sync": true,
-  "selected_at": "2026-09-10T22:49:33.713395-07:00",
-  "profile": "runtime/stable-prefill-sync",
-  "launch": null,
-  "stop": null,
-  "historical_launch": [
-    "./launch.sh",
-    "--start"
-  ],
-  "historical_stop": [
-    "./stop.sh"
-  ],
+  "status": "PROMOTED",
+  "release_name": "Qwen 27B 生产版（P2P/CUMEM，chunk 4096，Prefix Cache，native MTP K3，vision 兼容）",
+  "promoted_at": "2026-09-23T00:21:21.646969-07:00",
+  "profile": "profiles/production-dense-recovery-20260923",
+  "manifest_sha256": "053466c0ea4101f3c53bc22d4550e3474e3b3a431f99b62bda995737e17350ef",
+  "model": {
+    "repo_id": "nvidia/Qwen3.8-27B-NVFP4",
+    "revision": "dbb8f445b3145f8a4c18ddc769f032d57d32867c",
+    "served_model_name": "unsloth/Qwen3.8-27B-NVFP4",
+    "unified_api_model_id": "qwen38-27b-dense",
+    "class": "Qwen3_5ForConditionalGeneration"
+  },
+  "configuration": {
+    "tp": 2,
+    "mtp_k": 3,
+    "chunk": 4096,
+    "actual_mamba_alignment": 2848,
+    "max_context": 262144,
+    "graph": "FULL_DECODE_ONLY",
+    "capture": 4,
+    "kv_bytes_per_gpu": 3039750144,
+    "kv_dtype": "nvfp4",
+    "layout": "HND",
+    "max_num_seqs": 1,
+    "async_scheduling": false,
+    "custom_all_reduce": false,
+    "nccl_proto": "Simple",
+    "prefix_caching": true,
+    "multimodal": {
+      "sealed_profile_image_limit": 2,
+      "effective_image_limit": 2147483647,
+      "video_limit": 0,
+      "mm_encoder_tp_mode": "weights",
+      "processor_cache_gb": 4.0,
+      "scope": "Count limit is not a guarantee that arbitrary image sizes/counts fit context or VRAM."
+    }
+  },
+  "api": {
+    "gateway": "http://127.0.0.1:18080/v1",
+    "compat": ["18081 -> 18080", "18094 -> 18080"],
+    "relay": "18082 -> 18096 (HTTP/SSE)",
+    "backend": 18096
+  },
   "managed_entry": {
     "distribution": "host-only",
-    "type": "systemd+inference-control"
+    "type": "systemd+inference-control",
+    "entry": "~/nvidia-dense-runtime/inference-control {start|stop|restart|status|logs}"
   },
-  "api": "http://127.0.0.1:18094/v1",
-  "environment": {
-    "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
-    "FLASHINFER_NVCC_THREADS": "1",
-    "FLASHINFER_WORKSPACE_BASE": "/cache/flashinfer-workspace",
-    "HF_HUB_DISABLE_TELEMETRY": "1",
-    "HF_HUB_OFFLINE": "1",
-    "MAX_JOBS": "1",
-    "NCCL_P2P_DISABLE": "0",
-    "NCCL_SHM_DISABLE": "0",
-    "PYTHONUNBUFFERED": "1",
-    "TMPDIR": "/cache",
-    "TRANSFORMERS_OFFLINE": "1",
-    "VLLM_FLASHINFER_AUTOTUNE_CACHE_DIR": "/cache/autotune-ns-final006",
-    "VLLM_KV_CACHE_LAYOUT": "HND",
-    "VLLM_NO_USAGE_STATS": "1",
-    "VLLM_SM120_GRAPH_DISPATCH_TELEMETRY": "1",
-    "VLLM_SM120_MTP_DECODE_GRAPH": "1",
-    "VLLM_SM120_MTP_GRAPH_EVIDENCE_DIR": "/results",
-    "VLLM_SM120_NVFP4_K3_GRAPH": "1",
-    "VLLM_SM120_NVFP4_K3_NATIVE": "1",
-    "VLLM_SM120_NVFP4_WORKSPACE_TELEMETRY": "1",
-    "VLLM_STABILITY_TELEMETRY_DIR": "/results/stability-telemetry",
-    "VLLM_TP_GENERATION_LIFECYCLE": "1",
-    "VLLM_USE_V2_MODEL_RUNNER": "0",
-    "CUDA_ENABLE_COREDUMP_ON_EXCEPTION": "1",
-    "CUDA_ENABLE_USER_TRIGGERED_COREDUMP": "1",
-    "CUDA_COREDUMP_FILE": "/results/cuda-core.%h.%p.%t.nvcudmp",
-    "CUDA_COREDUMP_PIPE": "/results/cuda-pipe.%h.%p",
-    "CUDA_COREDUMP_GENERATION_FLAGS": "skip_abort",
-    "CUDA_COREDUMP_SHOW_PROGRESS": "1",
-    "NCCL_PROTO": "Simple",
-    "NCCL_DEBUG": "INFO",
-    "NCCL_DEBUG_SUBSYS": "INIT,ENV,GRAPH",
-    "VLLM_SPEC_INDEX_VALIDATION": "1"
+  "fallback": {
+    "record": "legacy/production-dense-grouped-20260922",
+    "manifest_sha256": "87971548b51369f2b028f18bef4275196d70d7079aec3ef830d725257dafb0a5",
+    "immutable": true
   },
-  "replaces": "Historical approximately61tok/s Dense daily configuration",
-  "lineage": "Final006 of the approximately66.2tok/s Graph003 approach, including lifecycle fixes",
-  "automatic_legacy_fallback": false,
-  "legacy_evidence_preserved": true,
-  "engine_long_requests_and_lifecycle": "PREFILL_CONTEXT_AND_CANCELLATION_VERIFIED",
-  "formal_performance_qualified": false,
-  "service_started_by_this_selection": true,
-  "launch_entry": {
-    "path": "launch.sh",
-    "bytes": 328,
-    "sha256": "535a0bccb33096d8a0d19f9bb1028e629057b01184a23c150a5192e30acf013c",
-    "distribution": "local-only: direct-launch scripts retired, not part of the public tree"
+  "hardware": {
+    "gpus": ["RTX 5070 Ti", "RTX 5070 Ti"],
+    "topology": "PHB"
   },
-  "stop_entry": {
-    "path": "stop.sh",
-    "bytes": 393,
-    "sha256": "c6d6a4461cb9f8675e0b581d2a87dfa5cb19ce00eb8e0c556dd60fdc38176b9e",
-    "distribution": "local-only: direct-launch scripts retired, not part of the public tree"
+  "review": {
+    "verdict": "PASS_WITH_DISCLOSED_LIMITATIONS",
+    "scope": "Independent review record is host-only (evidence/next-stage/independent-review.json); configuration and promotion records are committed under validation/production-dense-recovery-20260923/."
   },
-  "qualification": "HOST_MEMORY_REPAIR_INFERENCE_VERIFIED_LONG_TERM_UNPROVEN",
-  "historical_freeze": {
-    "path": "runtime/graph006/FREEZE.json",
-    "bytes": 3496,
-    "sha256": "bd6af9c4e2a799f38b996de2b5b7a7205b9cd81644f232a0cb76de81466e3370"
-  },
-  "selected_runtime": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-host-memory-admission/recovery-admission-1789280187427168892-e6b50b6f67c4",
-  "manifest_sha256": "13735d1c1d3b12d0083565918c9ef7d5e6e68a08393863a46c5b76bf306df87e",
-  "existing_instance_adopted": false,
+  "new_optimizations": [
+    "CPU renderer warmup after engine HELLO replies overlaps independent engine startup",
+    "sealed model file stat identity with unchanged full SHA fallback"
+  ],
+  "diagnostics_in_production": false,
+  "lineage": [
+    "runtime/graph006 era (chunk 2048, 2026-09-10): legacy/ACTIVE_PROFILE.graph006-20260910.json",
+    "candidate-v30-prefill-chunk4096 (2026-09-14 baseline freeze)",
+    "production-dense-grouped-20260922 (fallback)",
+    "production-dense-telemetry-20260922 (intermediate, host-only)",
+    "production-dense-recovery-20260923 (current)"
+  ],
+  "previous_record": "legacy/ACTIVE_PROFILE.graph006-20260910.json",
+  "host_only_state": [
+    "runs/, state/, cache-blessed/, telemetry, core dumps, repair evidence originals",
+    "relay.mjs / relay-supervisor.mjs (private HTTP/SSE relay code)",
+    "model weights (21 GiB, nvidia/Qwen3.8-27B-NVFP4; fetch via download_model.sh)"
+  ],
+  "qualification": "PROMOTED_WITH_DISCLOSED_LIMITATIONS_LONG_TERM_STABILITY_UNPROVEN",
   "root_cause_proven": false,
-  "api_relay": "qwen27b-relay.service; HTTP/SSE 18094 -> 18096; structured errors, SSE keepalive, ready-worker reload preserving in-flight streams",
-  "historical_observed_decode_median_tok_s": 67.52732542680727,
-  "historical_repair": {
-    "path": "runtime/graph006/REPAIR.json",
-    "manifest_sha256": "21cf58a5ead5d29cc3a29ef57e57eab25667c7d792fd0093ce812fb186de65bd"
-  },
-  "max_num_batched_tokens": 2048,
-  "automatic_recovery": {
-    "enabled": true,
-    "max_attempts_per_30min": 2,
-    "automatic_cooldown": true,
-    "backoff_seconds": 30,
-    "recoverable_xid_numbers": "unrestricted"
-  },
-  "live_selection_source": "runtime/stable-prefill-sync/selection.json",
-  "index_audit_report": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-index-audit/REPORT.md",
-  "kv_cache_memory_bytes": 3039750144,
-  "last_verification_report": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-host-memory-admission/REPORT.md",
-  "prefill_audit_report": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-prefill-audit/REPORT.md",
-  "long_term_stability_qualified": false,
-  "overlay_count": 15,
-  "p2p_boot_gate": "~/p2p-stable/scripts/qwen-p2p-gate.py",
-  "p2p_transport_policy": "Check actual bidirectional NCCL P2P channels on every supervised start/recovery; refuse SHM/NET fallback.",
-  "mamba_cache_mode": "align",
-  "cpus": 8,
-  "gdn_inner_sync": false,
-  "p2p_hang_audit_report": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-p2p-hang-audit/REPORT.md",
-  "service_supervising_selected_runtime": true,
-  "opencode_state_audit_report": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-opencode-state-audit/REPORT.md",
-  "host_memory_admission": {
-    "startup_working_gib": 16,
-    "host_floor_gib": 6,
-    "required_available_gib": 22,
-    "container_limit_gib": 45
-  },
-  "host_memory_audit_report": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-host-memory-admission/REPORT.md",
-  "last_verified_run_id": "652dceda1b9b446896a762f7cbd4ebc2",
-  "last_verified_at": "2026-09-10T22:53:15.095936-07:00",
-  "last_activation_receipt": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-host-memory-admission/restoration-receipt.json",
-  "host_memory_observed_peak_gib": 7.748126983642578,
-  "disconnect_audit_report": "~/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-disconnect-audit/REPORT.md",
-  "http_relay_sha256": "23b56df22b0d79cc374d6634bc40d1c4c39de8d0209c46dd7a2f0eefd26cc216",
-  "http_relay_supervisor_sha256": "2751ea3b7b32b0f44a05f02fda2d38c0030840a162a7aecfcbf4c63f423f4de4",
-  "recovered_from_run": "admission-1789280187427168892"
+  "last_verified_at": "2026-09-23T00:21:21.646969-07:00"
 }

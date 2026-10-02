@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "inputs": {
+    "inventory_sha256": "ae3ffd056abb7e7f01cb5a163f2f04d013ae48cab8a1daf4aec0600e7896685f",
+    "profiles_sha256": "fc54fc314f6fd8139893844c9b78ad44f4e885984d884a34ebb602406c24bc69",
+    "environment_sha256": "439fa121e644228ad11d8e5838612b3883c2e608933de01785b31d1c8c0cd3b1",
+    "model_revision": "dbb8f445b3145f8a4c18ddc769f032d57d32867c",
+    "image": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
+    "driver": "610.57.04",
+    "kernel": "7.0.0-30-generic",
+    "p2p_manifest": "e2d924fc31261430bcae418e499b8e75c990a5f2397978aa96d826a1a828436a",
+    "gpus": [
+      "GPU-8897f327-ceb9-4fab-b84e-d34b24f0b584",
+      "GPU-0506b796-f8ea-b40c-616d-5e9d43a9e175"
+    ]
+  },
+  "model_root": "/home/frank/nvidia-dense-runtime/models/qwen38-27b-nvidia-nvfp4",
+  "files": {
+    ".gitattributes": {
+      "st_dev": 66306,
+      "st_ino": 17054862,
+      "st_size": 1570,
+      "st_mtime_ns": 1789362280829603089,
+      "st_ctime_ns": 1789362280830137536,
+      "sha256": "34448b82c17d60fec9b65b1f093c115ddbaadc04beb1b0140b6bfed2e012a930"
+    },
+    ".quant_summary.txt": {
+      "st_dev": 66306,
+      "st_ino": 17054861,
+      "st_size": 318035,
+      "st_mtime_ns": 1789362280830982114,
+      "st_ctime_ns": 1789362280831310799,
+      "sha256": "0f8818b69fa46381899bdc72833805409e6ca9771f9c34e5f3dcf4674da9a3a1"
+    },
+    "LICENSE": {
+      "st_dev": 66306,
+      "st_ino": 17054863,
+      "st_size": 11544,
+      "st_mtime_ns": 1789362280832801572,
+      "st_ctime_ns": 1789362280833334526,
+      "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a"
+    },
+    "README.md": {
+      "st_dev": 66306,
+      "st_ino": 17054864,
+      "st_size": 8976,
+      "st_mtime_ns": 1789362280834003864,
+      "st_ctime_ns": 1789362280834311001,
+      "sha256": "5155ae78be082b7a75731a0e71cb38df42a0671b5a825a69c48be5efaca33e49"
+    },
+    "chat_template.jinja": {
+      "st_dev": 66306,
+      "st_ino": 17054865,
+      "st_size": 8952,
+      "st_mtime_ns": 1789362280835234390,
+      "st_ctime_ns": 1789362280835311068,
+      "sha256": "c3cf9e34abf4f9e36c2d72165aa9c132d3e2a725b6c2586aaa3a8af9d7a81041"
+    },
+    "config.json": {
+      "st_dev": 66306,
+      "st_ino": 17054866,
+      "st_size": 87506,
+      "st_mtime_ns": 1789362280836477311,
+      "st_ctime_ns": 1789362280837157650,
+      "sha256": "71fa01bb64de20971045cd82a82c0ebb25a54e1b0a3f09ef23cf5479e9c54df8"
+    },
+    "generation_config.json": {
+      "st_dev": 66306,
+      "st_ino": 17054867,
+      "st_size": 214,
+      "st_mtime_ns": 1789362280837842318,
+      "st_ctime_ns": 1789362280838388748,
+      "sha256": "8a3a817a9d330f6f9e62f048fe62a48594946c4a5c4cb314a8011316d5094986"
+    },
+    "hf_quant_config.json": {
+      "st_dev": 66306,
+      "st_ino": 17054868,
+      "st_size": 53760,
+      "st_mtime_ns": 1789362280839059258,
+      "st_ctime_ns": 1789362280839311337,
+      "sha256": "5f4aaa9e462ddb26a9790ab459eee69d100b9ade7541f0c86038e925c013f80b"
+    },
+    "merges.txt": {
+      "st_dev": 66306,
+      "st_ino": 17054869,
+      "st_size": 3353259,
+      "st_mtime_ns": 1789362280841311472,
+      "st_ctime_ns": 1789362280847311875,
+      "sha256": "a9d356d7bdf1ef4949e3e748e95b8e10ad9d4e2e838eddc38a0a7b6b94d1db8d"
+    },
+    "model-00001-of-00003.safetensors": {
+      "st_dev": 66306,
+      "st_ino": 17054870,
+      "st_size": 9965652544,
+      "st_mtime_ns": 1789362287738775526,
+      "st_ctime_ns": 1789362293359153733,
+      "sha256": "7d0fd155118901373eb0fd13ed3aae68f95be747bc205be72ebc41739c25ee80"
+    },
+    "model-00002-of-00003.safetensors": {
+      "st_dev": 66306,
+      "st_ino": 17054871,
+      "st_size": 9985757064,
+      "st_mtime_ns": 1789362300251617631,
+      "st_ctime_ns": 1789362305712985277,
+      "sha256": "98a7e9486baa860c792c9463a770cb9d017696bdd17606300a5b9334149f4c27"
+    },
+    "model-00003-of-00003.safetensors": {
+      "st_dev": 66306,
+      "st_ino": 17054872,
+      "st_size": 1970287672,
+      "st_mtime_ns": 1789362307042074756,
+      "st_ctime_ns": 1789362308297159257,
+      "sha256": "0506ad35dc21469708e7813bd76c592cef08bd0317b4a1fe899745ebe2435271"
+    },
+    "model.safetensors.index.json": {
+      "st_dev": 66306,
+      "st_ino": 17054874,
+      "st_size": 214866,
+      "st_mtime_ns": 1789362308306775310,
+      "st_ctime_ns": 1789362308307159931,
+      "sha256": "7aa103a2582b7d26631988de33dea19e8a308ee9c239e8e14feb374af30905e2"
+    },
+    "preprocessor_config.json": {
+      "st_dev": 66306,
+      "st_ino": 17054875,
+      "st_size": 390,
+      "st_mtime_ns": 1789362308308316800,
+      "st_ctime_ns": 1789362308308818864,
+      "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516"
+    },
+    "processor_config.json": {
+      "st_dev": 66306,
+      "st_ino": 17054876,
+      "st_size": 1191,
+      "st_mtime_ns": 1789362308309387917,
+      "st_ctime_ns": 1789362308309847429,
+      "sha256": "d89ef49ce9cd37fbf510158e13c1ef063d9286411c1ec9049932dbe0487143b1"
+    },
+    "tokenizer.json": {
+      "st_dev": 66306,
+      "st_ino": 17054877,
+      "st_size": 12809320,
+      "st_mtime_ns": 1789362308319160739,
+      "st_ctime_ns": 1789362308332161614,
+      "sha256": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3"
+    },
+    "tokenizer_config.json": {
+      "st_dev": 66306,
+      "st_ino": 17054878,
+      "st_size": 1121,
+      "st_mtime_ns": 1789362308334161749,
+      "st_ctime_ns": 1789362308335161816,
+      "sha256": "e5d078b00e6c1223b32444db8c1001dc71d86ceef8ee706b5bf084c3a43a1f9c"
+    },
+    "video_preprocessor_config.json": {
+      "st_dev": 66306,
+      "st_ino": 17054879,
+      "st_size": 385,
+      "st_mtime_ns": 1789362308336248261,
+      "st_ctime_ns": 1789362308336785663,
+      "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13"
+    },
+    "vocab.json": {
+      "st_dev": 66306,
+      "st_ino": 17054880,
+      "st_size": 6722759,
+      "st_mtime_ns": 1789362308339162085,
+      "st_ctime_ns": 1789362308350162826,
+      "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003"
+    }
+  },
+  "scope": "Full SHA256 at sealing, dev/inode/size/mtime_ns/ctime_ns on reload; changed identity invokes original full SHA verifier.",
+  "sealed_epoch": 1790144773.4426568,
+  "seal_elapsed_seconds": 11.233898162841797
+}

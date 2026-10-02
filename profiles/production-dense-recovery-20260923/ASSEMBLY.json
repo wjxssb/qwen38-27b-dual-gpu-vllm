@@ -1,0 +1,11 @@
+{
+  "GPU_source_files_changed": true,
+  "after": 4096,
+  "base_manifest_sha256": "53f3b642ec5e2444fc662d8757d2b385b790a8299a65acd11e452726b8670d0c",
+  "before": 2048,
+  "model_math_changed": false,
+  "producer_sha256": "5e9296a943ec14cda54a418f4dda807fc9f55d0b1a80d11bdd851dfda760faf2",
+  "source_scope": "Only exact MTP admission chunk constant tracks argv; all capture/replay/phase/shape checks unchanged",
+  "state": "STAGED_NOT_PRODUCTION",
+  "variable": "max-num-batched-tokens"
+}

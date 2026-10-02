@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "scope": "CPU_BOUNDARY_DIAGNOSTIC_ONLY",
+  "runtime_qualification": "NOT_PROVEN",
+  "files": [
+    {
+      "path": "CPU-TESTS.txt",
+      "sha256": "55acf04e65d3404f1835e3bcf770da0e7180bc97d84d416901af8fb15fb540a7",
+      "bytes": 2778
+    },
+    {
+      "path": "DERIVATION.json",
+      "sha256": "d0daddd2a5219e4c2843ef4e3f4d957d8a727018392f7558ade548ad7084d39f",
+      "bytes": 3525
+    },
+    {
+      "path": "README.md",
+      "sha256": "317050bfd4e6cdd11b6e872ad85f18c627f56fa9093d5fad82ea9f10ad186f86",
+      "bytes": 4056
+    },
+    {
+      "path": "build.py",
+      "sha256": "2bc3367be0935fa212e1ba4629aa2ce2b308ffa2425c3dd9cd5b1f30d1c67b23",
+      "bytes": 6319
+    },
+    {
+      "path": "gpu_model_runner.py.diff",
+      "sha256": "3eb8e7c559e6b97a8bd5e33cf033c96fd7e0e2f569da74250d94fd6526f0916e",
+      "bytes": 4636
+    },
+    {
+      "path": "multiproc_executor.py.diff",
+      "sha256": "2b684fe59e99cae8d7c5178ef811a6545145a7637887e219ec7fba525bed7e9d",
+      "bytes": 1980
+    },
+    {
+      "path": "overlay/vllm/v1/executor/multiproc_executor.py",
+      "sha256": "539bfb14eea81c87e60ce67c1d88e7044f91f55008595ec5436863a0e66f1dd7",
+      "bytes": 139069
+    },
+    {
+      "path": "overlay/vllm/v1/worker/gpu_model_runner.py",
+      "sha256": "0b83188453877907d908c211e6952c0aa5ce4ee3ada1cb81b6198ae884cf2d46",
+      "bytes": 390117
+    },
+    {
+      "path": "test_breadcrumbs_cpu.py",
+      "sha256": "7351ccc8db2b0f3125d9c54b4527c9c320a08f1999e0b0e2bdacb067b0b471e2",
+      "bytes": 13396
+    }
+  ]
+}

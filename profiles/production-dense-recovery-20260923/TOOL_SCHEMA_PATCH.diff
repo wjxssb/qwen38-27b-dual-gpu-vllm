@@ -1,0 +1,104 @@
+--- pinned/vllm/entrypoints/openai/chat_completion/protocol.py
++++ candidate/vllm/entrypoints/openai/chat_completion/protocol.py
+@@ -56,6 +56,68 @@
+ 
+ _INT64_MIN = -(2**63)
+ _INT64_MAX = 2**63 - 1
++
++
++_JSON_SCHEMA_TYPES = frozenset(
++    {"array", "boolean", "integer", "null", "number", "object", "string"}
++)
++
++
++def _validate_tool_schema_types(schema: dict[str, Any], parameter: str) -> None:
++    """Reject invalid type keywords without imposing a JSON Schema dialect.
++
++    Visit schema positions only: enum/const/default/examples and extension
++    objects contain instance data, where a field named "type" is unrestricted.
++    Other schema validity and backend support remain native backend concerns.
++    """
++    pending: list[tuple[Any, str]] = [(schema, parameter)]
++    visited: set[int] = set()
++    while pending:
++        node, path = pending.pop()
++        if not isinstance(node, dict) or id(node) in visited:
++            continue
++        visited.add(id(node))
++        if "type" in node:
++            value = node["type"]
++            valid = isinstance(value, str) and value in _JSON_SCHEMA_TYPES
++            if isinstance(value, list):
++                valid = (
++                    bool(value)
++                    and all(isinstance(item, str) and item in _JSON_SCHEMA_TYPES
++                            for item in value)
++                    and len(set(value)) == len(value)
++                )
++            if not valid:
++                raise VLLMValidationError(
++                    "JSON Schema 'type' must be a JSON type name or a non-empty "
++                    "array of distinct JSON type names.",
++                    parameter=f"{path}.type",
++                )
++        for keyword in (
++            "$defs", "definitions", "properties", "patternProperties",
++            "dependentSchemas", "dependencies",
++        ):
++            children = node.get(keyword)
++            if isinstance(children, dict):
++                pending.extend((child, f"{path}.{keyword}.{name}")
++                               for name, child in children.items()
++                               if isinstance(child, dict))
++        for keyword in (
++            "items", "additionalItems", "additionalProperties", "contains",
++            "propertyNames", "not", "if", "then", "else", "unevaluatedItems",
++            "unevaluatedProperties", "contentSchema",
++        ):
++            child = node.get(keyword)
++            if isinstance(child, dict):
++                pending.append((child, f"{path}.{keyword}"))
++            elif keyword == "items" and isinstance(child, list):
++                pending.extend((item, f"{path}.{keyword}.{index}")
++                               for index, item in enumerate(child))
++        for keyword in ("allOf", "anyOf", "oneOf", "prefixItems"):
++            children = node.get(keyword)
++            if isinstance(children, list):
++                pending.extend((child, f"{path}.{keyword}.{index}")
++                               for index, child in enumerate(children))
+ 
+ 
+ class ChatMessage(OpenAIBaseModel):
+@@ -975,6 +1037,18 @@
+                     )
+         return data
+ 
++    @model_validator(mode="after")
++    def validate_tool_schema_types(self):
++        # Keep the existing tool_choice="none" bypass and backend behavior.
++        if self.tool_choice != "none" and self.tools:
++            for index, tool in enumerate(self.tools):
++                if tool.function.parameters is not None:
++                    _validate_tool_schema_types(
++                        tool.function.parameters,
++                        f"tools.{index}.function.parameters",
++                    )
++        return self
++
+     @model_validator(mode="before")
+     @classmethod
+     def check_generation_prompt(cls, data):
+--- pinned/vllm/v1/structured_output/backend_guidance.py
++++ candidate/vllm/v1/structured_output/backend_guidance.py
+@@ -263,6 +263,11 @@
+                 s_tag = json.loads(grammar_spec)
+             else:
+                 s_tag = grammar_spec
++            if isinstance(s_tag, dict) and "format" in s_tag and "structures" not in s_tag:
++                raise ValueError(
++                    "The guidance backend does not support the current structural "
++                    "tag format; only legacy 'structures'/'triggers' tags are supported."
++                )
+             triggers: list[str] = s_tag["triggers"]
+             tags: list[llguidance.StructTag] = []
+             for s in s_tag["structures"]:

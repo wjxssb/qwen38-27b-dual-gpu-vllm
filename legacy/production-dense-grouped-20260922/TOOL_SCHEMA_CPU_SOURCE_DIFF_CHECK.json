@@ -1,0 +1,8 @@
+{
+  "protocol_only_helper_constant_and_validator_added": true,
+  "guidance_only_expected_format_guard_added": true,
+  "tested_source_hashes_still_exact": true,
+  "tested_validator_hash_still_exact": true,
+  "exact_incident_fixture_malformed.json": true,
+  "exact_incident_fixture_malformed-stream.json": true
+}

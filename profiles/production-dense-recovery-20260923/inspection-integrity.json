@@ -1,0 +1,56 @@
+[
+  {
+    "bytes": 99,
+    "path": "inspection/nvidia_runtime_inspection/__init__.py",
+    "sha256": "2839d2b7632c39bc5d5b20ef1627ae12acbd305c9aa10b00433720a24bad1df7",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection/__init__.py"
+  },
+  {
+    "bytes": 7150,
+    "path": "inspection/nvidia_runtime_inspection/admission.py",
+    "sha256": "1445014db260609523fb5e18c7beba21d0087c234fc94ff07362c4545a7a26c3",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection/admission.py"
+  },
+  {
+    "bytes": 17348,
+    "path": "inspection/nvidia_runtime_inspection/collector.py",
+    "sha256": "5908faa5c055b4ef4efabcb5800b55273cebd8123a4eb1b216941354759dfaf5",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection/collector.py"
+  },
+  {
+    "bytes": 4380,
+    "path": "inspection/nvidia_runtime_inspection/endpoint.py",
+    "sha256": "9c70fe4142753deec2bd45962f5520e5a00d0fe6d4088dec58fb46f011a09394",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection/endpoint.py"
+  },
+  {
+    "bytes": 5930,
+    "path": "inspection/nvidia_runtime_inspection/sampler.py",
+    "sha256": "f5b919b8a11a7afc36396a49655ef6eca7b12f7c0e53d61bba57954ed77784cf",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection/sampler.py"
+  },
+  {
+    "bytes": 10949,
+    "path": "inspection/nvidia_runtime_inspection/transport.py",
+    "sha256": "1193c3245e12ec1c1b28d247acbf8052f1604bd90561c7ff0d2e0a5600f5dac3",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection/transport.py"
+  },
+  {
+    "bytes": 130,
+    "path": "inspection/nvidia_runtime_inspection-0.1.0.dist-info/METADATA",
+    "sha256": "2749621dc3d8037c6a5f3aebcf274252fc71500815998f80c43a520f410c157e",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection-0.1.0.dist-info/METADATA"
+  },
+  {
+    "bytes": 106,
+    "path": "inspection/nvidia_runtime_inspection-0.1.0.dist-info/entry_points.txt",
+    "sha256": "1baf47f9bba96ea63d62f33d3f8db5f1bf646988a993824f0ced3e5507173c17",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection-0.1.0.dist-info/entry_points.txt"
+  },
+  {
+    "bytes": 26,
+    "path": "inspection/nvidia_runtime_inspection-0.1.0.dist-info/top_level.txt",
+    "sha256": "00490dd14480ae3f25d33c486ec8cf658f615ba51acdbb2fc3bc63e71a540651",
+    "target": "/usr/local/lib/python3.12/dist-packages/nvidia_runtime_inspection-0.1.0.dist-info/top_level.txt"
+  }
+]

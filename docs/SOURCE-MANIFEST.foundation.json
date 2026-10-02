@@ -1,0 +1,565 @@
+{
+  "state": "FOUNDATION_SOURCES_VERIFIED_NEXT_STAGE_PENDING",
+  "files": [
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/FINAL-REPORT.md",
+      "sha256": "af79c2741ccb6ea155826aaa0680a77b5aedb7a46d0cbbacd5a32b793537530a",
+      "role": "FINAL-REPORT.md",
+      "created_at": "2026-09-23T04:39:23.079772+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/FINAL-REPORT.md",
+      "durable_sha256": "af79c2741ccb6ea155826aaa0680a77b5aedb7a46d0cbbacd5a32b793537530a"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/METHODOLOGY.md",
+      "sha256": "35da21e44f0b389a5e30e80e13e11a957cc0383b2c645d2329ac0a05618e281f",
+      "role": "METHODOLOGY.md",
+      "created_at": "2026-09-23T04:08:49.025246+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/METHODOLOGY.md",
+      "durable_sha256": "35da21e44f0b389a5e30e80e13e11a957cc0383b2c645d2329ac0a05618e281f"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/final-performance-table.json",
+      "sha256": "c17a1f12f615dc4ad39835774904b36064198d4a4dc5e32c9f6047dde9d396f2",
+      "role": "evidence/final-performance-table.json",
+      "created_at": "2026-09-23T04:30:08.312985+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/final-performance-table.json",
+      "durable_sha256": "c17a1f12f615dc4ad39835774904b36064198d4a4dc5e32c9f6047dde9d396f2"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/final-inflight-peer-loss/receipt.json",
+      "sha256": "41ff52faa7397632be5768a2234c9e450167b4c7f3f6f776a8fa9e7f5bf9a22f",
+      "role": "evidence/final-inflight-peer-loss/receipt.json",
+      "created_at": "2026-09-23T04:30:03.652883+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/final-inflight-peer-loss/receipt.json",
+      "durable_sha256": "41ff52faa7397632be5768a2234c9e450167b4c7f3f6f776a8fa9e7f5bf9a22f"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/finalization/receipt.json",
+      "sha256": "79e04d373dfb1f34cab953af8ccf9ea72a4e56dd15022b33af7ef03989f7f086",
+      "role": "evidence/finalization/receipt.json",
+      "created_at": "2026-09-23T04:30:04.284913+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/finalization/receipt.json",
+      "durable_sha256": "79e04d373dfb1f34cab953af8ccf9ea72a4e56dd15022b33af7ef03989f7f086"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/final-control-identity.json",
+      "sha256": "38edf0d34df5d131b154c706197720d11f3e94418707392d72fafb4a3244d6af",
+      "role": "evidence/final-control-identity.json",
+      "created_at": "2026-09-23T04:30:11.038796+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/final-control-identity.json",
+      "durable_sha256": "38edf0d34df5d131b154c706197720d11f3e94418707392d72fafb4a3244d6af"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/independent-review.json",
+      "sha256": "384ed3a936c8cdb487621408f6df8207610dff0e11fff28b96f01251d37dac37",
+      "role": "evidence/independent-review.json",
+      "created_at": "2026-09-23T04:38:31.516684+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/independent-review.json",
+      "durable_sha256": "384ed3a936c8cdb487621408f6df8207610dff0e11fff28b96f01251d37dac37"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/independent-review-closure.json",
+      "sha256": "0d6540084e19678a2aaedd46a2c48e85583166c520978d2486a4a5897a619dc6",
+      "role": "evidence/independent-review-closure.json",
+      "created_at": "2026-09-23T04:40:35.431773+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/independent-review-closure.json",
+      "durable_sha256": "0d6540084e19678a2aaedd46a2c48e85583166c520978d2486a4a5897a619dc6"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/synchronization-inventory.json",
+      "sha256": "ead25daaafa893feba21c5fc17f14c5763f34b97704be0f33f99eac4db3a690c",
+      "role": "evidence/synchronization-inventory.json",
+      "created_at": "2026-09-23T00:12:09.178262+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/synchronization-inventory.json",
+      "durable_sha256": "ead25daaafa893feba21c5fc17f14c5763f34b97704be0f33f99eac4db3a690c"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/installed-synchronization-inventory.json",
+      "sha256": "8d42a577a2762701bc7d8eb37c5298d89f2d81bfd582e6ce62bbe6155c088d19",
+      "role": "evidence/installed-synchronization-inventory.json",
+      "created_at": "2026-09-22T23:05:22.594751+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/installed-synchronization-inventory.json",
+      "durable_sha256": "8d42a577a2762701bc7d8eb37c5298d89f2d81bfd582e6ce62bbe6155c088d19"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/decode-event-attribution.json",
+      "sha256": "b72a7bd338d867d6889e8152cdb335e1d7f9df3f96387edaac5ebd3e41edacdd",
+      "role": "evidence/decode-event-attribution.json",
+      "created_at": "2026-09-23T03:41:21.177854+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/decode-event-attribution.json",
+      "durable_sha256": "b72a7bd338d867d6889e8152cdb335e1d7f9df3f96387edaac5ebd3e41edacdd"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/decode-cupti-attribution-1k16k.json",
+      "sha256": "3ec607ea45cddb8393d9e0a804ec794cef28cab2f363ed4f6d73dba3f95a2d74",
+      "role": "evidence/decode-cupti-attribution-1k16k.json",
+      "created_at": "2026-09-23T03:29:40.428665+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/decode-cupti-attribution-1k16k.json",
+      "durable_sha256": "3ec607ea45cddb8393d9e0a804ec794cef28cab2f363ed4f6d73dba3f95a2d74"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/decode-decision.json",
+      "sha256": "dbc40e8ab58120382d39981c99d92bfdf1d504ab095047db449aa7f99441d647",
+      "role": "evidence/decode-decision.json",
+      "created_at": "2026-09-23T03:41:50.412607+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/decode-decision.json",
+      "durable_sha256": "dbc40e8ab58120382d39981c99d92bfdf1d504ab095047db449aa7f99441d647"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/patches/index.json",
+      "sha256": "fc23ed7ae166424e3ada9d9926917a661fb39a8c48691e1bd08fb5522ad72d55",
+      "role": "evidence/patches/index.json",
+      "created_at": "2026-09-23T01:30:54.799868+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/patches/index.json",
+      "durable_sha256": "fc23ed7ae166424e3ada9d9926917a661fb39a8c48691e1bd08fb5522ad72d55"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/sync-grouped-comparison.json",
+      "sha256": "185e61176c793de56edbb959f01d95db283860e0cab3c13d96de3642dc8c4d17",
+      "role": "evidence/sync-grouped-comparison.json",
+      "created_at": "2026-09-23T03:12:38.007375+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/sync-grouped-comparison.json",
+      "durable_sha256": "185e61176c793de56edbb959f01d95db283860e0cab3c13d96de3642dc8c4d17"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/synchronization-measured-all-candidates.json",
+      "sha256": "3763c9967c662320d3928ba30eebb92096f35c40d14284f82c6fe226c4249842",
+      "role": "evidence/synchronization-measured-all-candidates.json",
+      "created_at": "2026-09-23T02:49:12.557635+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/synchronization-measured-all-candidates.json",
+      "durable_sha256": "3763c9967c662320d3928ba30eebb92096f35c40d14284f82c6fe226c4249842"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/patches/candidate-v35-telemetry-20260922.patch",
+      "sha256": "b6a62c9e825815444d14034b8c123954790e7afa25bfe91bb31b9a3d711a3054",
+      "role": "qualified/rejected source patch",
+      "created_at": "2026-09-23T01:30:54.796422+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "candidate",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/patches/candidate-v35-telemetry-20260922.patch",
+      "durable_sha256": "b6a62c9e825815444d14034b8c123954790e7afa25bfe91bb31b9a3d711a3054"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/patches/candidate-v36-sync-input-20260922.patch",
+      "sha256": "419b48e12b52bfb727414abb8f82824b6750e6537fe0bd40b3056d38e605c406",
+      "role": "qualified/rejected source patch",
+      "created_at": "2026-09-23T01:30:54.797341+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "candidate",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/patches/candidate-v36-sync-input-20260922.patch",
+      "durable_sha256": "419b48e12b52bfb727414abb8f82824b6750e6537fe0bd40b3056d38e605c406"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/patches/candidate-v37-sync-postnorm-20260922.patch",
+      "sha256": "bd168dca8d0e9eee7ed0ac43d51ad3f8ac3d4282cb1c20fa845629367567d4ca",
+      "role": "qualified/rejected source patch",
+      "created_at": "2026-09-23T01:30:54.798115+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "candidate",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/patches/candidate-v37-sync-postnorm-20260922.patch",
+      "durable_sha256": "bd168dca8d0e9eee7ed0ac43d51ad3f8ac3d4282cb1c20fa845629367567d4ca"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/patches/candidate-v38-stream-event-20260922.patch",
+      "sha256": "8604e866a2b7490ff5e15f382c0f78f7e07d85db22f9c29a548d37220979c267",
+      "role": "qualified/rejected source patch",
+      "created_at": "2026-09-23T01:30:54.798931+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "candidate",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/patches/candidate-v38-stream-event-20260922.patch",
+      "durable_sha256": "8604e866a2b7490ff5e15f382c0f78f7e07d85db22f9c29a548d37220979c267"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/evidence/patches/candidate-v39-sync-grouped-20260922.patch",
+      "sha256": "8c14053fc8a81d75a70e4d823069bd4c8ae26fce92eb4dadc08fef03dbfa5704",
+      "role": "qualified/rejected source patch",
+      "created_at": "2026-09-23T01:30:54.799751+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "candidate",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/qualification/evidence/patches/candidate-v39-sync-grouped-20260922.patch",
+      "durable_sha256": "8c14053fc8a81d75a70e4d823069bd4c8ae26fce92eb4dadc08fef03dbfa5704"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/MANIFEST.json",
+      "sha256": "87971548b51369f2b028f18bef4275196d70d7079aec3ef830d725257dafb0a5",
+      "role": "accepted fallback MANIFEST.json",
+      "created_at": "2026-09-23T03:49:29.852459+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/MANIFEST.json",
+      "durable_sha256": "87971548b51369f2b028f18bef4275196d70d7079aec3ef830d725257dafb0a5"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/PROFILES.json",
+      "sha256": "fc54fc314f6fd8139893844c9b78ad44f4e885984d884a34ebb602406c24bc69",
+      "role": "accepted fallback PROFILES.json",
+      "created_at": "2026-09-14T10:06:25.805918+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/PROFILES.json",
+      "durable_sha256": "fc54fc314f6fd8139893844c9b78ad44f4e885984d884a34ebb602406c24bc69"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/environment.json",
+      "sha256": "439fa121e644228ad11d8e5838612b3883c2e608933de01785b31d1c8c0cd3b1",
+      "role": "accepted fallback environment.json",
+      "created_at": "2026-09-14T10:06:25.799218+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/environment.json",
+      "durable_sha256": "439fa121e644228ad11d8e5838612b3883c2e608933de01785b31d1c8c0cd3b1"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/overlay/vllm/model_executor/models/qwen3_next.py",
+      "sha256": "6041a346f0e9f93e19977d6832a43bd120f5f31d32a4c27614fabd4390963100",
+      "role": "accepted fallback overlay/vllm/model_executor/models/qwen3_next.py",
+      "created_at": "2026-09-22T22:43:29.007122+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/overlay/vllm/model_executor/models/qwen3_next.py",
+      "durable_sha256": "6041a346f0e9f93e19977d6832a43bd120f5f31d32a4c27614fabd4390963100"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/overlay/vllm/stability_telemetry.py",
+      "sha256": "3bfd77d9864769aed81ac50fcb6ffc078f77c7657ce6cec2ccc698a4670329b6",
+      "role": "accepted fallback overlay/vllm/stability_telemetry.py",
+      "created_at": "2026-09-22T22:31:51.705662+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/overlay/vllm/stability_telemetry.py",
+      "durable_sha256": "3bfd77d9864769aed81ac50fcb6ffc078f77c7657ce6cec2ccc698a4670329b6"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/overlay/vllm/v1/executor/multiproc_executor.py",
+      "sha256": "f44d0c5ec8cb92c4a86e6e20d9732bfde7866717ffe94588269e10af51f16d9b",
+      "role": "accepted fallback overlay/vllm/v1/executor/multiproc_executor.py",
+      "created_at": "2026-09-14T10:06:25.803282+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/overlay/vllm/v1/executor/multiproc_executor.py",
+      "durable_sha256": "f44d0c5ec8cb92c4a86e6e20d9732bfde7866717ffe94588269e10af51f16d9b"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/overlay/vllm/v1/worker/gpu_model_runner.py",
+      "sha256": "0b83188453877907d908c211e6952c0aa5ce4ee3ada1cb81b6198ae884cf2d46",
+      "role": "accepted fallback overlay/vllm/v1/worker/gpu_model_runner.py",
+      "created_at": "2026-09-14T10:06:25.804075+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/overlay/vllm/v1/worker/gpu_model_runner.py",
+      "durable_sha256": "0b83188453877907d908c211e6952c0aa5ce4ee3ada1cb81b6198ae884cf2d46"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/overlay/vllm/v1/engine/async_llm.py",
+      "sha256": "f71aaba8fc7f4b75d28d3e2e7e75ba96ba8a9b333538a86bfbdc627f59c807e7",
+      "role": "accepted fallback overlay/vllm/v1/engine/async_llm.py",
+      "created_at": "2026-09-14T10:06:25.802848+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/overlay/vllm/v1/engine/async_llm.py",
+      "durable_sha256": "f71aaba8fc7f4b75d28d3e2e7e75ba96ba8a9b333538a86bfbdc627f59c807e7"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922/launcher.py",
+      "sha256": "a240247aa47cdc7e2df30e86ccdea0db4ebb8b7babc42e51a18bcd8dee8172f4",
+      "role": "accepted fallback launcher.py",
+      "created_at": "2026-09-14T10:06:25.800160+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/fallback/launcher.py",
+      "durable_sha256": "a240247aa47cdc7e2df30e86ccdea0db4ebb8b7babc42e51a18bcd8dee8172f4"
+    },
+    {
+      "path": "/home/frank/local-inference-production/scripts/recovery.py",
+      "sha256": "4767c3b893fe8a5c424c6375ba5eec71f958f70393b30b62b8364525a3a27883",
+      "role": "qualified control source",
+      "created_at": "2026-09-23T00:29:00.938697+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/control/recovery.py",
+      "durable_sha256": "4767c3b893fe8a5c424c6375ba5eec71f958f70393b30b62b8364525a3a27883"
+    },
+    {
+      "path": "/home/frank/local-inference-production/scripts/rpc_progress.py",
+      "sha256": "4358811d7b1dc56abd4eef58c98be0a87d5432a12ef227ea1fc4c620a448f125",
+      "role": "qualified control source",
+      "created_at": "2026-09-22T21:05:32.872547+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/control/rpc_progress.py",
+      "durable_sha256": "4358811d7b1dc56abd4eef58c98be0a87d5432a12ef227ea1fc4c620a448f125"
+    },
+    {
+      "path": "/home/frank/local-inference-production/scripts/wedge_forensics.py",
+      "sha256": "697d2c41714b029f9540d56b6a915ee69dd053ba306054518c97a3ef5adb465a",
+      "role": "qualified control source",
+      "created_at": "2026-09-22T21:08:15.940732+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/control/wedge_forensics.py",
+      "durable_sha256": "697d2c41714b029f9540d56b6a915ee69dd053ba306054518c97a3ef5adb465a"
+    },
+    {
+      "path": "/home/frank/local-inference-production/scripts/nvidia-launch.py",
+      "sha256": "81ae62eeadd998df48028d0b3dbea14e9ec28b349471948762fa447fecfc492a",
+      "role": "qualified control source",
+      "created_at": "2026-09-17T02:41:53.014022+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "production",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/sources/control/nvidia-launch.py",
+      "durable_sha256": "81ae62eeadd998df48028d0b3dbea14e9ec28b349471948762fa447fecfc492a"
+    },
+    {
+      "path": "/home/frank/p2p-stable/STABLE_BASELINE.md",
+      "sha256": "ea3791ace2667dd52f200ee93085a24b01f01790d19a8103b0740ebed5f95183",
+      "role": "historical p2p-STABLE_BASELINE.md",
+      "created_at": "2026-09-11T00:33:35.150959+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/history/p2p-STABLE_BASELINE.md",
+      "durable_sha256": "ea3791ace2667dd52f200ee93085a24b01f01790d19a8103b0740ebed5f95183"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/mtp-k3-closeout-20260914/CLOSEOUT.md",
+      "sha256": "6c4511fd7aa9054a31b2060e61d6b3f092d059ed20e90e817df777f742646226",
+      "role": "historical mtp-CLOSEOUT.md",
+      "created_at": "2026-09-14T11:56:42.172976+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/history/mtp-CLOSEOUT.md",
+      "durable_sha256": "6c4511fd7aa9054a31b2060e61d6b3f092d059ed20e90e817df777f742646226"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/prefill-tp2-closeout-20260914/MEASURED_AB.md",
+      "sha256": "f93f2416d6ccec59fede273a70d95c59861810fc9b0bf35e733886a72a017883",
+      "role": "historical chunk-MEASURED_AB.md",
+      "created_at": "2026-09-14T11:21:23.618857+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/history/chunk-MEASURED_AB.md",
+      "durable_sha256": "f93f2416d6ccec59fede273a70d95c59861810fc9b0bf35e733886a72a017883"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/prefill-tp2-closeout-20260914/CLOSEOUT.md",
+      "sha256": "61977fd8b05f0013c7f03e4a2203e7c99240f41c0d3be92c423546c2e9ec5e9c",
+      "role": "historical chunk-CLOSEOUT.md",
+      "created_at": "2026-09-14T11:55:33.871853+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/history/chunk-CLOSEOUT.md",
+      "durable_sha256": "61977fd8b05f0013c7f03e4a2203e7c99240f41c0d3be92c423546c2e9ec5e9c"
+    },
+    {
+      "path": "/home/frank/qwen38-27b-dual-gpu-vllm/runtime/graph006/source-spec006.json",
+      "sha256": "8c6866062df080899fa8feda8a46494da7f049858e8ebe5d13f262924ec32ca1",
+      "role": "historical initial-graph006.json",
+      "created_at": "2026-09-05T08:02:43.883086+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/history/initial-graph006.json",
+      "durable_sha256": "8c6866062df080899fa8feda8a46494da7f049858e8ebe5d13f262924ec32ca1"
+    },
+    {
+      "path": "/home/frank/qwen38-27b-dual-gpu-vllm/runtime/graph006/repairs/20260910-opencode-state-audit/REPORT.md",
+      "sha256": "ae5646e80a666b5a3022a78a1e3ccd4b35512d22d93e393176a1118743af3a5d",
+      "role": "historical graph006-repair-REPORT.md",
+      "created_at": "2026-09-11T00:33:16.537775+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/history/graph006-repair-REPORT.md",
+      "durable_sha256": "ae5646e80a666b5a3022a78a1e3ccd4b35512d22d93e393176a1118743af3a5d"
+    },
+    {
+      "path": "/home/frank/nvidia-dense-runtime/closeout-migration-20260914/unique-production-migration/MIGRATION_CLOSEOUT.md",
+      "sha256": "ea6f4ccf56574e8c643ef1e9271e2d4fdac66b5306b7a77af3df414ab2364fe9",
+      "role": "historical migration-CLOSEOUT.md",
+      "created_at": "2026-09-14T08:42:36.035491+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/history/migration-CLOSEOUT.md",
+      "durable_sha256": "ea6f4ccf56574e8c643ef1e9271e2d4fdac66b5306b7a77af3df414ab2364fe9"
+    },
+    {
+      "path": "/home/frank/qwen38-next-stage-20260923/evidence/hardware-foundation-current.json",
+      "sha256": "e3ecab721d75b18553b14cc6b0951cbc4e07c5603905589cc6190a2310e3df1d",
+      "role": "hardware read-only observations",
+      "created_at": "2026-09-23T05:13:37.381821+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/hardware-foundation-current.json",
+      "durable_sha256": "e3ecab721d75b18553b14cc6b0951cbc4e07c5603905589cc6190a2310e3df1d"
+    },
+    {
+      "path": "/home/frank/qwen38-next-stage-20260923/evidence/frozen-baseline.json",
+      "sha256": "ee0a06f65987643adbc6e8b50443e30b5839da21155072b2360aac3af7381f7d",
+      "role": "accepted fallback freeze",
+      "created_at": "2026-09-23T04:54:59.926993+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/evidence/frozen-baseline.json",
+      "durable_sha256": "ee0a06f65987643adbc6e8b50443e30b5839da21155072b2360aac3af7381f7d"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/bench.py",
+      "sha256": "b699f2d53f997b7f2faead853153b5cff76d4c24db1d60bb0fcaf7aba4d6cf3f",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-22T23:07:01.535058+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/bench.py",
+      "durable_sha256": "b699f2d53f997b7f2faead853153b5cff76d4c24db1d60bb0fcaf7aba4d6cf3f"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/compare.py",
+      "sha256": "ec028c5d31d89d95bb292bb91f0a5ec6c5f0947a672d791949ed69fb55355c25",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-23T00:04:33.049541+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/compare.py",
+      "durable_sha256": "ec028c5d31d89d95bb292bb91f0a5ec6c5f0947a672d791949ed69fb55355c25"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/fault_test.py",
+      "sha256": "b22ad0a969f4c9fcd6f187a4d783861a166e7206639ed31041b25e605f16e134",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-23T01:26:04.698549+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/fault_test.py",
+      "durable_sha256": "b22ad0a969f4c9fcd6f187a4d783861a166e7206639ed31041b25e605f16e134"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/fault_workload.py",
+      "sha256": "5dcb6f4a8f6f9ad42d8ec3bc743e5984951e315127b4c713ba13877f44c31809",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-22T23:36:12.679186+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/fault_workload.py",
+      "durable_sha256": "5dcb6f4a8f6f9ad42d8ec3bc743e5984951e315127b4c713ba13877f44c31809"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/loaded_identity.py",
+      "sha256": "a1386f29ce30cb84063ec336bd40003d7aa0e2d1ace53008aa26d377a08fefb4",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-22T23:18:35.407855+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/loaded_identity.py",
+      "durable_sha256": "a1386f29ce30cb84063ec336bd40003d7aa0e2d1ace53008aa26d377a08fefb4"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/safe_restore.py",
+      "sha256": "0b1bbf20f15df4de1719ce0e7452f3564e37d81e94947686bbc4ee15cf1ef1bb",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-23T01:14:12.117559+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/safe_restore.py",
+      "durable_sha256": "0b1bbf20f15df4de1719ce0e7452f3564e37d81e94947686bbc4ee15cf1ef1bb"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/lifecycle.py",
+      "sha256": "d74230f9be2441846c8ef41540a70d1e1a2bbd92e54b7597e8217c6e6dfebeb0",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-23T00:28:30.750993+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/lifecycle.py",
+      "durable_sha256": "d74230f9be2441846c8ef41540a70d1e1a2bbd92e54b7597e8217c6e6dfebeb0"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/common.py",
+      "sha256": "c6f417e952ab3f781f23dfcd4242f266fab8c2f893cc21ce83a4e63430d530fe",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-22T22:26:42.960176+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/common.py",
+      "durable_sha256": "c6f417e952ab3f781f23dfcd4242f266fab8c2f893cc21ce83a4e63430d530fe"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/cache_release.py",
+      "sha256": "9ba4af5d0c449d906b38260fbe9a08f9abb65ca7fa934220c234a06df6caa604",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-22T23:13:48.897835+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/cache_release.py",
+      "durable_sha256": "9ba4af5d0c449d906b38260fbe9a08f9abb65ca7fa934220c234a06df6caa604"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/log_observation.py",
+      "sha256": "26d4814447b93d4ab2c2b7be77cee813650f354d3a5a348793cbd416aefea083",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-22T22:50:07.766877+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/log_observation.py",
+      "durable_sha256": "26d4814447b93d4ab2c2b7be77cee813650f354d3a5a348793cbd416aefea083"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/stop_timeline.py",
+      "sha256": "10de12730b3fc56cc5d2f1adbaf8cea485219cd1a1eeed03f2958eb6788a8fa4",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-23T00:50:56.087108+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/stop_timeline.py",
+      "durable_sha256": "10de12730b3fc56cc5d2f1adbaf8cea485219cd1a1eeed03f2958eb6788a8fa4"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/scripts/promote.py",
+      "sha256": "7d89e43b487b27dbc404ae7030596363ac6a8b98101908715c6da571634ebe42",
+      "role": "historical harness reference; absolute paths require new workspace rebinding",
+      "created_at": "2026-09-23T01:25:22.482800+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/promote.py",
+      "durable_sha256": "7d89e43b487b27dbc404ae7030596363ac6a8b98101908715c6da571634ebe42"
+    },
+    {
+      "path": "/home/frank/dense-opt-repair-20260922/qualification/fixtures/inventory.json",
+      "sha256": "438f3756fc6e902c93e3d6300cef0d073bad9b8fdbbdd47b94406618de160562",
+      "role": "fixture source hashes",
+      "created_at": "2026-09-22T22:26:44.611225+00:00",
+      "created_at_semantics": "source filesystem mtime; not asserted authoring time",
+      "type": "evidence",
+      "durable_copy": "/home/frank/local-inference-production/docs/qwen38-optimization/reference-harness/fixture-inventory.json",
+      "durable_sha256": "438f3756fc6e902c93e3d6300cef0d073bad9b8fdbbdd47b94406618de160562"
+    }
+  ]
+}

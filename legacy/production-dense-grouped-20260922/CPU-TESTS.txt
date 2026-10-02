@@ -1,0 +1,5 @@
+CPU_MOCKS_ONLY
+Command: python3 candidate/test_launcher_cpu.py
+Ran 18 tests in 0.003s
+OK
+No GPU or service/container lifecycle calls.

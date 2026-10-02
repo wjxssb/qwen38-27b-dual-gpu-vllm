@@ -1,0 +1,12 @@
+[Unit]
+Description=Staged NVIDIA Dense candidate (%i)
+
+[Service]
+Type=simple
+WorkingDirectory=/home/frank/ai/qwen38-27b-nvidia-migration-20260913/candidate-v2
+ExecStart=/usr/bin/python3 -I /home/frank/ai/qwen38-27b-nvidia-migration-20260913/candidate-v2/launcher.py run --profile %i
+ExecStop=/usr/bin/python3 -I /home/frank/ai/qwen38-27b-nvidia-migration-20260913/candidate-v2/launcher.py stop --profile %i
+Restart=no
+KillMode=process
+TimeoutStopSec=infinity
+SendSIGKILL=no

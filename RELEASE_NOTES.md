@@ -1,3 +1,29 @@
+# 2026-09-23 — 生产记录更新：production-dense-recovery-20260923
+
+> 本节记录宿主机 dense 栈的当前状态，不是新的容器发布；`v1.0.0` 镜像契约（`release.json`）保持不变。
+
+- 当前生产 profile：`production-dense-recovery-20260923`，manifest
+  `053466c0ea4101f3c53bc22d4550e3474e3b3a431f99b62bda995737e17350ef`，
+  2026-09-23T00:21:21-07:00 晋升（`validation/production-dense-recovery-20260923/`）。
+- 模型改为 `nvidia/Qwen3.8-27B-NVFP4`，revision `dbb8f445b3145f8a4c18ddc769f032d57d32867c`
+  （`Qwen3_5ForConditionalGeneration`）；served 名与旧 API 别名 `unsloth/Qwen3.8-27B-NVFP4` 保留，
+  统一 API 模型 ID 为 `qwen38-27b-dense`。
+- 调度：prefill chunk 2048 → **4096**；Prefix Cache 开启（Mamba align，实际 block 2848）；
+  native MTP K3 + FULL_DECODE_ONLY Graph（capture 4）；NCCL Simple、双向 P2P 门禁每实例校验。
+- API 拓扑：Gateway 18080 为唯一入口；18081/18094 兼容转发至 18080；18082 relay → 18096 后端。
+- 回退（不可变）：`production-dense-grouped-20260922`，manifest
+  `87971548b51369f2b028f18bef4275196d70d7079aec3ef830d725257dafb0a5`。
+- 本轮新增：CPU renderer warmup 与引擎 HELLO 重叠；密封模型文件 stat 身份 + 全 SHA 回退校验。
+- 评审结论：`PASS_WITH_DISCLOSED_LIMITATIONS`；性能范围声明：本轮测量的是 reload 恢复与正确性，
+  不是新的模型吞吐提升；已接受的吞吐基线保留于 `docs/PERFORMANCE-BASELINES.json`。
+- 长期稳定性与首次非法内核唯一根因仍未证明；诊断代码不在生产路径内。
+- 仓库新增公开文本资产：`profiles/production-dense-recovery-20260923/`（含 overlay 修复源码与
+  control-binding 副本）、`legacy/production-dense-grouped-20260922/`、`docs/`（优化史、失败与
+  否决想法、XID13 调查、恢复架构、参考 harness）、`validation/production-dense-recovery-20260923/`。
+  `runs/`、`state/`、`cache-blessed/`、遥测与私有 relay 代码仍仅限宿主机。
+
+---
+
 # Release v1.0.0 — sm120-nvfp4-k3
 
 > **Historical release note for tag `v1.0.0`.**  

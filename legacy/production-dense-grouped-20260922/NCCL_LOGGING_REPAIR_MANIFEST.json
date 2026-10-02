@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "scope": "READ_ONLY_V6_ROUTE_AND_PINNED_IMAGE_CPU_LOGGING",
+  "files": {
+    "CPU_SPAWN_STDIO_EXPERIMENT.json": {
+      "sha256": "0fceb5f4a2b3cb11635467eb62ef4fd19b4dc6141b7074b6e8833d3dc33108b0",
+      "bytes": 1730
+    },
+    "CPU_STDIO_EXPERIMENT.json": {
+      "sha256": "31ae71669c30b9ff790e6e7b49ce572c2ab05128c36a7ea47e312b596ea0c3f9",
+      "bytes": 970
+    },
+    "CPYTHON_INTERPRETER_FLAG_SOURCE.json": {
+      "sha256": "40b3fcd83be419cf0dc7f6838401975d76cfc63d52c9366af1f4c059b060c527",
+      "bytes": 2018
+    },
+    "EXACT_IMAGE_CPU_LOGGING.json": {
+      "sha256": "bd36383207c8f5949f69cad3562d51724be2d6f7cc59d27a7fa8f9781901c662",
+      "bytes": 7541
+    },
+    "REVIEW.md": {
+      "sha256": "2acbb2a1f514602df865b1c43cf1eded8b114bdfba98d9fbd2ce09e0de5ae341",
+      "bytes": 5200
+    },
+    "ROUTE_ENV_COMPARISON.json": {
+      "sha256": "a4db68c10adf553cae48e0008596b7d04075843511b50d45a8de27c3367dce3c",
+      "bytes": 5314
+    },
+    "exact_image_nccl_logging_probe.py": {
+      "sha256": "935d22b5acde39fe6f17ca06f4d45d74f4fcdb161a285f529934f715265ca6e9",
+      "bytes": 2282
+    },
+    "isolated_env_ignored.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "isolated_env_ignored.stdout": {
+      "sha256": "a6e954b0400e0300e2fed4ca6992d4e15e6d89a37516d5344cde724492768a36",
+      "bytes": 695
+    },
+    "isolated_native_debug_file.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "isolated_native_debug_file.stdout": {
+      "sha256": "90fd5f5aafd05f82e1d7855e7b5dd2574ebb6e15dd0de4d13bf2249f6779bff7",
+      "bytes": 1426
+    },
+    "official-nccl-2.30.7-source/SOURCES.json": {
+      "sha256": "83f8edece2669de7b81da00f7fc317ac132f6990718b8fac03758f25978d12ed",
+      "bytes": 2652
+    },
+    "official-nccl-2.30.7-source/bootstrap.cc": {
+      "sha256": "5caeb14e870c497b0ac6d94cbabbe570727ac49c2016a5f91af7b689e29ac911",
+      "bytes": 57267
+    },
+    "official-nccl-2.30.7-source/debug.cc": {
+      "sha256": "3a69f66e5852578dd6230cb8dd8491c58349d8c59fdf290ee347d3270fa5915b",
+      "bytes": 19838
+    },
+    "official-nccl-2.30.7-source/debug.h": {
+      "sha256": "a53c3648e0e637549c3ccc8fca5fdbc7f5ed028477c17cd5c3f3a91483843a33",
+      "bytes": 4304
+    },
+    "official-nccl-2.30.7-source/init.cc": {
+      "sha256": "f6f4089a4e5d768427de6c5b45352871cabf8d66c5751fb49de566ebd9296e3a",
+      "bytes": 145865
+    },
+    "official-nccl-2.30.7-source/nccl_common.h": {
+      "sha256": "4e4d19feda29a286b48353a6378bb8169d9cbf49364887e265d652c15ae31c3c",
+      "bytes": 2433
+    },
+    "official-nccl-2.30.7-source/p2p.cc": {
+      "sha256": "eb895b6117adad0e681cd786a6e0550d942c150597c73ff286c3400b41732fbd",
+      "bytes": 63343
+    },
+    "official-nccl-2.30.7-source/tag-ref.json": {
+      "sha256": "41dc3eb8c71d1b0555104ac607b762c6d814bb8a992c7e42149aa16f068bb25d",
+      "bytes": 341
+    },
+    "ordinary_env_unbuffered.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "ordinary_env_unbuffered.stdout": {
+      "sha256": "e418f9ba268f464367c430e9e3985a75b17ffb137d95ce92965006e7868a8cac",
+      "bytes": 1401
+    },
+    "run_exact_image_nccl_logging.py": {
+      "sha256": "7db0ef8db81e3f7cb9775f4f9aa3487e5f20f8bd1dc435ed1625c36148905dc9",
+      "bytes": 2755
+    },
+    "spawn_stdio_probe.py": {
+      "sha256": "1fa7ad2e1acfe8514c1b6f16bff2d46159d0005defebfae9fa4756a269a6d8a6",
+      "bytes": 888
+    }
+  }
+}

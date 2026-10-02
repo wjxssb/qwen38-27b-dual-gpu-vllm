@@ -1,0 +1,17 @@
+{
+  "candidate": "/home/frank/nvidia-dense-runtime/production-dense-recovery-20260923",
+  "manifest": "053466c0ea4101f3c53bc22d4550e3474e3b3a431f99b62bda995737e17350ef",
+  "cache_directory": "/home/frank/nvidia-dense-runtime/production-dense-recovery-20260923/cache-blessed",
+  "files": {
+    "owned-stop.py": "b0f58a3638bc004feaf0e68c4f381609842caf937c8de8017f69af527d216325",
+    "relay.mjs": "ad627f3a803c8cebdcab8f37c0ecf75cd49687167eb5e0f52be94f7b61a8cfbb",
+    "relay-supervisor.mjs": "2751ea3b7b32b0f44a05f02fda2d38c0030840a162a7aecfcbf4c63f423f4de4",
+    "qwen27b.service.conf": "9dc32ead64535605e99192009d0980fe854ef67288aa0f1b899427545426a226",
+    "qwen27b-relay.service.conf": "5098491dc5b3bb9d13620f9b9030c9805e19b47141fb4dff3cd1fa729ac25254",
+    "local-gpu-recovery.service.conf": "0f75411bd26b3b0ed9653d5bf5f7bb2e640de2906a29fa87b0686be26b1e73ec",
+    "p2p-gate.py": "4b3f7277cb8ccceef907336c7eb3a3c4785f684a3131af4ba9da956d497e40a9",
+    "recovery.py": "1615f2d164ad5eb274d777192595cb0bbecb59d216a15c8941edb848e7857665",
+    "nvidia-launch.py": "c92f34e58efb8f7fd9c72a4f842603c1d55b415960921d63ff97d032ffc00f00"
+  },
+  "logic_changes": "none; only explicit root, release path, manifest digest, owned-stop path, and proven identical per-release cache bindings"
+}

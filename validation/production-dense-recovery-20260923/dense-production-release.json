@@ -1,0 +1,9 @@
+{
+  "state": "PROMOTED",
+  "runtime": "/home/frank/nvidia-dense-runtime/production-dense-recovery-20260923",
+  "manifest_sha256": "053466c0ea4101f3c53bc22d4550e3474e3b3a431f99b62bda995737e17350ef",
+  "bindings": "/home/frank/local-inference-production/runtime-bindings/production-dense-recovery-20260923-control-4767c3b893fe",
+  "receipt": "/home/frank/qwen38-next-stage-20260923/evidence/promotion-commit.json",
+  "previous_runtime": "/home/frank/nvidia-dense-runtime/production-dense-grouped-20260922",
+  "epoch": 1790148081.6469693
+}

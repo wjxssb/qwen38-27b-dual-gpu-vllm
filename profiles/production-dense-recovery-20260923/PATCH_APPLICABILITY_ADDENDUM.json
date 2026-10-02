@@ -1,0 +1,49 @@
+{
+  "DFlash2": "BLOCKED_BY_NVIDIA_BASELINE",
+  "GPU_model_overlay_or_profile_changed": false,
+  "author_manifest_sha256": "2082b90e04de54d9c2732968cbda8ec5006d7bffc627a46e0a6e844eee1ad992",
+  "baseline_qualification": "NOT_PROVEN",
+  "image": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
+  "model_revision": "dbb8f445b3145f8a4c18ddc769f032d57d32867c",
+  "original_patch_matrix": {
+    "modified": false,
+    "path": "PATCH_APPLICABILITY_MATRIX.json",
+    "sha256": "8ac42aaf312e35fb1d0172dfe299c81893099da9927d7f5ba734325af7c7ddb7"
+  },
+  "patches": [
+    {
+      "checkpoint_independence": "Expected: operates on API schema data before model dispatch, does not inspect checkpoint tensors or modify model computation.",
+      "id": "CPU_TOOL_SCHEMA_TYPE_VALIDATION",
+      "live_candidate_status": "NOT_EXECUTED",
+      "scope": "Native ChatCompletionRequest CPU validation of malformed type keywords at tool-schema positions; tool_choice=none bypass and other schema data retained.",
+      "source": "overlay/vllm/entrypoints/openai/chat_completion/protocol.py",
+      "source_sha256": "2e6dcdf455e354ff1684b407e20eb13415408e6b1ee1dee3d0c92ac3ff704d37",
+      "testing": "Author 18 native CPU tests; peer 14 accepted-request parity cases, 33 malformed cases and exact incident JSON/SSE HTTP400-before-handler checks."
+    },
+    {
+      "checkpoint_independence": "Expected: native CPU grammar-format boundary, independent of tensor shapes/weights; actual model requests still require baseline validation.",
+      "id": "CPU_GUIDANCE_CURRENT_FORMAT_GUARD",
+      "live_candidate_status": "NOT_EXECUTED",
+      "scope": "Explicit unsupported-current-structural-tag ValueError before legacy structures access; existing backend selection, legacy serializer and unrelated faults unchanged.",
+      "source": "overlay/vllm/v1/structured_output/backend_guidance.py",
+      "source_sha256": "3ea71c1d0b34e806d7c4844a188395e478de3daff487b5b708025696c68aad34",
+      "testing": "Author/peer native xgrammar success, valid unsupported-schema fallback, exact legacy serialization parity and unrelated exception propagation."
+    },
+    {
+      "checkpoint_independence": "Expected: native logger output policy independent of checkpoint; no collective or GPU kernel alteration.",
+      "environment": {
+        "NCCL_DEBUG_FILE": "/dev/stdout"
+      },
+      "id": "NATIVE_NCCL_LINE_BUFFERED_STDOUT",
+      "inherited_from_v7": true,
+      "logging_manifest_sha256": "4a833d3973c400d4dd14d338924ae634f2a09222ac90efaaca5614bba65f8301",
+      "physical_GPU_route": "NOT_PROVEN_BY_CPU_TEST",
+      "scope": "Native NCCL own FILE stream is line buffered and feeds existing Docker stdout/supervisor path; INFO/INIT categories, protocol and P2P settings unchanged.",
+      "source_to_binary_commit_identity": "NOT_PROVEN",
+      "testing": "Exact pinned image CPU spawned workers reproduce -I buffering and show /dev/stdout warning visibility; libNCCL SHA256 2d19623c75a1dc0f4296fa9b9ff5cb7f38f18e42b10076636eb4e144e9010d07."
+    }
+  ],
+  "peer_manifest_sha256": "2064ff24e03bafa828eed712f98c58f7065be3efa6a90d1de78db03f62f17b22",
+  "schema": 1,
+  "scope": "CPU_INPUT_VALIDATION_AND_NATIVE_LOGGING_ADDITIONS_ONLY"
+}

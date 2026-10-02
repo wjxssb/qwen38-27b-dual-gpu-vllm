@@ -1,0 +1,22 @@
+[
+  {
+    "path": "README.md",
+    "bytes": 1107,
+    "sha256": "96e597932d7e176fec8de6b6bf9aff06c8f689da3c39a0d0ea99891c3f0d1e27"
+  },
+  {
+    "path": "request_adapter.py",
+    "bytes": 4415,
+    "sha256": "44f01c6685305d215c4768c6a3e9ca53b6ff3a6f6f87169fced23e0c44be0f81"
+  },
+  {
+    "path": "test-receipt.json",
+    "bytes": 3132,
+    "sha256": "d37d67758e317d28a338ef2df4842e67e52b3eeb4f963620a6cf14852bf10044"
+  },
+  {
+    "path": "test_request_adapter.py",
+    "bytes": 7376,
+    "sha256": "1b9615c16a4649592ea32f357a4cd1e9161db5e21ece70f8b51f0d5d3f10e90e"
+  }
+]

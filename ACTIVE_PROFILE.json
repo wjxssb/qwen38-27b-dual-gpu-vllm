@@ -43,6 +43,20 @@
     "relay": "18082 -> 18096 (HTTP/SSE)",
     "backend": 18096
   },
+  "distribution": {
+    "public_image": null,
+    "host_image_id": "sha256:b6190f100526423e5855c5c0f98773744c91a69a7e112993d66bed038c9b76c6",
+    "host_image_tag": "localhost/frank/vllm-nvfp4-kv-sm120:stability-core-v1-immutable",
+    "composition": "host-only base image + 29 read-only overlay bind mounts (overlay-integrity.json) + inspection package mount + host launcher/supervisor/recovery + nvidia/Qwen3.8-27B-NVFP4 weights",
+    "public_release": {
+      "record": "release.json",
+      "tag": "v1.0.0",
+      "image": "ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3",
+      "image_digest": "sha256:275913ba1639a37a1364114432de1fbbe6786a6407f133e3cabe0a3e6f2104ff",
+      "entry": "python3 -I launcher.py"
+    },
+    "note": "This profile has not been published as an image. The only pullable image is the v1.0.0 release, which runs a different (2026-09-05 validated) configuration."
+  },
   "managed_entry": {
     "distribution": "host-only",
     "type": "systemd+inference-control",

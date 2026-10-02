@@ -21,6 +21,10 @@
   control-binding 副本）、`legacy/production-dense-grouped-20260922/`、`docs/`（优化史、失败与
   否决想法、XID13 调查、恢复架构、参考 harness）、`validation/production-dense-recovery-20260923/`。
   `runs/`、`state/`、`cache-blessed/`、遥测与私有 relay 代码仍仅限宿主机。
+- **镜像未更新**：本次生产 profile 没有发布为容器镜像。GHCR 上唯一可拉取的仍是 v1.0.0
+  `ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3@sha256:275913ba…04ff`（2026-09-06 发布，
+  unsloth 模型、chunk 2048、无 Prefix Cache、P2P 关闭）；外部用户用 `python3 -I launcher.py` 运行它。
+  2026-10-01 复核：镜像匿名可拉、镜像内契约 SHA 与 `release.json` 一致、固定模型 revision 在 HF 上仍公开可下载。
 
 ---
 

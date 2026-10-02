@@ -7,6 +7,41 @@
 > 不随仓库分发；文中 `runtime/...` 与 `~/...` 链接指向本机档案，在 GitHub 上会 404。
 > 直接启动脚本 `launch.sh`/`stop.sh` 已退役且不在仓库中；`test_api.sh` 及
 > `runtime/...` 相关命令仅限持有 runtime/ 状态的宿主机运行。
+> 外部用户可用的只有下文「公开镜像（v1.0.0）」一节。
+
+## 公开镜像（v1.0.0）：其他人能直接 pull 的部分
+
+**能 pull 的只有 v1.0.0 镜像，它不是下文的 2026-09-23 宿主机生产 profile。**
+2026-09-23 的生产配置从未发布为镜像：它由宿主机私有基础镜像
+`sha256:b6190f10…b76c6` + 29 个只读 overlay 挂载 + 宿主机 launcher/supervisor/恢复逻辑
++ `nvidia/Qwen3.8-27B-NVFP4` 权重组合而成，不能靠单个镜像复现。
+
+| | 公开镜像 v1.0.0（可 pull） | 宿主机生产 2026-09-23（不可 pull） |
+| --- | --- | --- |
+| 镜像 | `ghcr.io/wjxssb/qwen38-27b-vllm:sm120-nvfp4-k3@sha256:275913ba…04ff`（公开，匿名可拉，约 11 GB 压缩） | 私有本地镜像 + overlay 挂载 |
+| 模型 | `unsloth/Qwen3.8-27B-NVFP4@57926bac` | `nvidia/Qwen3.8-27B-NVFP4@dbb8f445` |
+| prefill chunk | 2048 | 4096 |
+| Prefix Cache | 关闭 | 开启（Mamba align） |
+| NCCL P2P | 关闭（`NCCL_P2P_DISABLE=1`） | 开启，每实例双向 P2P 门禁 |
+| KV 字节/卡 | 2,928,199,680 | 3,039,750,144 |
+| 验证 | 2026-09-05 分阶段 GPU 质量门禁（`validation/stage-*`） | 仅在本机晋升验收 |
+
+使用方法（Linux x86_64、Docker + NVIDIA Container Toolkit、2 × SM120 16GB GPU、驱动 ≥ 595.84、
+可用内存 ≥ 28 GB；以普通用户运行）：
+
+```bash
+git clone https://github.com/wjxssb/qwen38-27b-dual-gpu-vllm.git
+cd qwen38-27b-dual-gpu-vllm
+python3 -I launcher.py --plan            # 只打印 release.json，不拉取
+python3 -I launcher.py --download-only   # 按 digest 拉镜像、校验镜像内契约、下载固定 revision 权重
+python3 -I launcher.py                   # 前台启动 http://127.0.0.1:8000/v1（默认 mtp3-graph）
+python3 -I launcher.py --stop            # 另一终端停止；Ctrl-C 也可
+```
+
+`launcher.py` 按 `release.json` 中的 digest 拉取镜像，校验镜像内 `/opt/qwen38-runtime/release.json`
+的 SHA-256，只接受已验证模式（`mtp3-graph`、`eager-baseline`），选中的 GPU 有其他计算进程或空闲显存不足时拒绝启动。
+手动 `docker run` 等价命令与已知问题见 `v1.0.0` tag 的 README 与 [RELEASE_NOTES.md](RELEASE_NOTES.md)。
+一致性由 `tests/public_release_contract_cpu.py` 守护（无需 GPU/网络）。
 
 ## 当前记录（2026-09-23 晋升）
 
